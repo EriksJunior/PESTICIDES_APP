@@ -1,15 +1,12 @@
-import { Text } from "react-native";
-import { Container, Header, CustomInput } from "./styles";
+import { InputCustom } from "@/components/UI/Inputs/InputText";
+
+import { Container, Header } from "./styles";
 
 export function Search() {
   return (
     <Container>
       <Header>
-        <CustomInput>
-          <Text style={{ color: 'white' }}>
-            Search Pesticide
-          </Text>
-        </CustomInput>
+        <InputCustom showSearch/>
       </Header>
     </Container>
   )

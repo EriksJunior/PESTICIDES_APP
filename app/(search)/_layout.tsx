@@ -4,25 +4,32 @@ import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 
 export default function TabLayout() {
   return (
-    <Tabs screenOptions={{
-      tabBarActiveTintColor: 'green',
-      tabBarStyle: {
-        backgroundColor: '#25292e'
-      }
-    }}>
+    <Tabs
+      sceneContainerStyle={{
+        backgroundColor: "#25292e"
+      }}
+      screenOptions={{
+        tabBarActiveTintColor: '#187b13',
+        tabBarInactiveTintColor: '#565656',
+        tabBarShowLabel: false,
+        tabBarStyle: {
+          backgroundColor: '#25292e',
+          borderTopColor: '#3f3f3f'
+        }
+      }}>
       <Tabs.Screen name="index" options={{
         title: 'Agrotóxicos',
         headerShown: false,
-        tabBarIcon: ({ color, focused }) => (
-          <MaterialCommunityIcons name={focused ? 'leaf-circle' : 'leaf-circle-outline'} color={color} size={30} />
+        tabBarIcon: ({ color, size }) => (
+          <MaterialCommunityIcons name={'leaf-circle'} color={color} size={size + 10} />
         )
       }} />
 
       <Tabs.Screen name="about" options={{
         title: 'Atualizações',
         headerShown: false,
-        tabBarIcon: ({ color, focused }) => (
-          <FontAwesome6 name={focused ? 'book-open' : 'book'} color={color} size={24} />
+        tabBarIcon: ({ color, size }) => (
+          <FontAwesome6 name={'book'} color={color} size={size} />
         ),
       }} />
     </Tabs>

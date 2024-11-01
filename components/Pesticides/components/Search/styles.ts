@@ -9,12 +9,7 @@ export const Container = styled.View`
 
 export const Header = styled.View`
   width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
-`
-
-export const CustomInput = styled.View`
-  width: 200px;
-  border: solid 1px white;
-  border-radius: 5px;
-  padding: 5px;
 `
