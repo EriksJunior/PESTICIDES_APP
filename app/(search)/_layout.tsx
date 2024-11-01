@@ -6,6 +6,9 @@ export default function TabLayout() {
   return (
     <Tabs screenOptions={{
       tabBarActiveTintColor: 'green',
+      tabBarStyle: {
+        backgroundColor: '#25292e'
+      }
     }}>
       <Tabs.Screen name="index" options={{
         title: 'Agrotóxicos',
