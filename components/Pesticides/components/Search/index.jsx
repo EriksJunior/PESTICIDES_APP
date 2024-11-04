@@ -69,7 +69,7 @@ export function Search() {
           <PesticidesList
             data={pesticides}
             keyExtractor={(pesticide) => pesticide.value}
-            renderItem={({ item }) => <PerticideCard pesticide={item} />}
+            renderItem={({ item, index }) => <PerticideCard pesticide={item} idx={index} lastIdx={pesticides.length - 1}/>}
             ItemSeparatorComponent={() => (
               <View
                 style={{
