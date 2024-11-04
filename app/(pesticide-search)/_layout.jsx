@@ -1,5 +1,4 @@
 import { Tabs } from "expo-router";
-import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 import AntDesign from "@expo/vector-icons/AntDesign";
 
@@ -8,7 +7,7 @@ export default function TabLayout() {
     <Tabs
       screenOptions={{
         tabBarActiveTintColor: "#187b13",
-        tabBarInactiveTintColor: "#565656",
+        tabBarInactiveTintColor: "#6a6262",
         tabBarShowLabel: false,
         tabBarStyle: {
           backgroundColor: "#141414",

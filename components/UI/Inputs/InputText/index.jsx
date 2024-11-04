@@ -1,27 +1,26 @@
 import { useState } from "react";
-import { Text, View } from "react-native";
-import { Content, Input } from "./styles";
-import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
+import { Text, View, TextInput } from "react-native";
+import { s } from "./styles";
+import { Theme } from "@/styles/theme";
 
-export function InputCustom({ showSearch = false }) {
+export function InputCustom({ rightIcon }) {
   const [isFocused, setIsFocused] = useState(false);
 
   return (
-    <Content $focused={isFocused}>
-      <Input
-        placeholderTextColor={'#6a6262'}
+    <View style={[s.content, isFocused ? s.focused : s.notFocused]}>
+      <TextInput
+        style={s.input}
+        placeholderTextColor={Theme.dark.secondaryText}
         placeholder="Pesquise por nome ou Nº Registro"
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
       />
 
-      {showSearch &&
-        <View style={{ height: 35, width: 35, justifyContent: 'center', alignItems: 'center' }}>
-          <Text>
-            <MaterialCommunityIcons name={'leaf'} color="#187b13" size={24} />
-          </Text>
+      {rightIcon && (
+        <View style={s.contentIcon}>
+          <Text>{rightIcon}</Text>
         </View>
-      }
-    </Content>
-  )
+      )}
+    </View>
+  );
 }

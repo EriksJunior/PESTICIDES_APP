@@ -1,8 +1,10 @@
+import { s } from "./styles";
 import { InputCustom } from "@/components/UI/Inputs/InputText";
-
-import { Container, Header, PesticidesList } from "./styles";
 import { PerticideCard } from "../Card";
-import { View, Text, ScrollView } from "react-native";
+
+import { View, Text, ScrollView, FlatList } from "react-native";
+import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
+import { Theme } from "@/styles/theme";
 
 export function Search() {
   const pesticides = [
@@ -41,35 +43,33 @@ export function Search() {
     { text: "Gaxtoxin", value: "33" },
   ];
   return (
-    <Container>
-      <Header>
-        <InputCustom showSearch />
-      </Header>
+    <View style={s.container}>
+      <View style={s.header}>
+        <InputCustom
+          rightIcon={
+            <MaterialCommunityIcons name={"leaf"} color={Theme.dark.lightGreen} size={24} />
+          }
+        />
+      </View>
 
       <ScrollView
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{
-          paddingHorizontal: 12,
+          paddingHorizontal: 16,
           paddingTop: 28,
           paddingBottom: 50,
         }}
       >
-        <View style={{ paddingBottom: 16, paddingLeft: 8 }}>
+        <View style={{ paddingBottom: 16 }}>
           <Text style={{ color: "gray", fontWeight: 500, fontSize: 16 }}>
             Agrotoxicos
           </Text>
         </View>
 
-        <PesticidesList
+        <FlatList
           data={pesticides}
           keyExtractor={(pesticide) => pesticide.value}
-          renderItem={({ item, index }) => (
-            <PerticideCard
-              pesticide={item}
-              idx={index}
-              lastIdx={pesticides.length - 1}
-            />
-          )}
+          renderItem={({ item }) => <PerticideCard pesticide={item} />}
           ItemSeparatorComponent={() => (
             <View
               style={{
@@ -82,6 +82,6 @@ export function Search() {
           showsVerticalScrollIndicator={false}
         />
       </ScrollView>
-    </Container>
+    </View>
   );
 }
