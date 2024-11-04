@@ -60,29 +60,27 @@ export function Search() {
           </Text>
         </View>
 
-        <View
-          style={{
-            backgroundColor: "#252525",
-            borderRadius: 5,
-          }}
-        >
-          <PesticidesList
-            data={pesticides}
-            keyExtractor={(pesticide) => pesticide.value}
-            renderItem={({ item, index }) => <PerticideCard pesticide={item} idx={index} lastIdx={pesticides.length - 1}/>}
-            ItemSeparatorComponent={() => (
-              <View
-                style={{
-                  flex: 1,
-                  height: 1,
-                  backgroundColor: "#3d3d3d",
-                }}
-              ></View>
-            )}
-            scrollEnabled={false}
-            showsVerticalScrollIndicator={false}
-          />
-        </View>
+        <PesticidesList
+          data={pesticides}
+          keyExtractor={(pesticide) => pesticide.value}
+          renderItem={({ item, index }) => (
+            <PerticideCard
+              pesticide={item}
+              idx={index}
+              lastIdx={pesticides.length - 1}
+            />
+          )}
+          ItemSeparatorComponent={() => (
+            <View
+              style={{
+                flex: 1,
+                height: 5,
+              }}
+            ></View>
+          )}
+          scrollEnabled={false}
+          showsVerticalScrollIndicator={false}
+        />
       </ScrollView>
     </Container>
   );

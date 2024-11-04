@@ -14,8 +14,9 @@ export function PerticideCard({ pesticide, idx, lastIdx }) {
           borderStyle: "solid",
           alignItems: "center",
           justifyContent: "center",
-          borderTopLeftRadius: idx === 0 ? 5 : 0,
-          borderBottomLeftRadius: idx === lastIdx ? 5 : 0,
+          borderColor: 'transparent',
+          borderTopLeftRadius: 5,
+          borderBottomLeftRadius: 5,
         }}
       >
         <FontAwesome6 name="file-pdf" size={24} color="#b8b8b8" />

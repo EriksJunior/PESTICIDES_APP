@@ -6,7 +6,6 @@ export const Content = styled.View`
   flex-direction: row;
   align-items: center;
   gap: 10px;
-  /* border-bottom-width: 1px;
-  border-bottom-color: #3d3d3d;
-  border-bottom-style: solid; */
+  background-color: #202020;
+  border-radius: 5px;
 `
