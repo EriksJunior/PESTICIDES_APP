@@ -1,14 +1,14 @@
 import { Stack } from "expo-router";
 
-export default function RootLayout() {
+export default function Layout() {
   return (
     <Stack>
       <Stack.Screen
-        name="(perticide)"
+        name="(search)"
         options={{ animation: "ios", headerShown: false }}
       />
       <Stack.Screen
-        name="+not-found"
+        name="details/index"
         options={{ animation: "ios", headerShown: false }}
       />
     </Stack>

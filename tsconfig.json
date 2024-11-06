@@ -13,5 +13,5 @@
     "**/*.tsx",
     ".expo/types/**/*.ts",
     "expo-env.d.ts"
-, "components/Pesticides/components/Search/index.jsx", "components/ThemedView.jsx", "components/ThemedText.jsx", "hooks/useColorScheme.js", "hooks/useColorScheme.web.js", "hooks/useThemeColor.js", "components/UI/Inputs/InputText/index.jsx", "components/UI/Inputs/InputText/styles.js", "components/Pesticides/components/Card/index.jsx", "components/Pesticides/components/Card/styles.js", "components/Pesticides/components/Search/styles.js", "app/_layout.jsx", "app/+not-found.jsx", "app/(pesticide-search)/_layout.jsx", "app/(pesticide-search)/about.jsx", "app/(pesticide-search)/index.jsx"  ]
+, "components/Pesticides/components/Search/index.jsx", "components/ThemedView.jsx", "components/ThemedText.jsx", "hooks/useColorScheme.js", "hooks/useColorScheme.web.js", "hooks/useThemeColor.js", "components/UI/Inputs/InputText/index.jsx", "components/UI/Inputs/InputText/styles.js", "components/Pesticides/components/Card/index.jsx", "components/Pesticides/components/Card/styles.js", "components/Pesticides/components/Search/styles.js", "app/_layout.jsx", "app/+not-found.jsx", "app/(pesticide)/search/_layout.jsx", "app/(pesticide)/search/about.jsx", "app/(pesticide)/search/index.jsx"  ]
 }

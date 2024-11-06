@@ -2,6 +2,7 @@ import { Text, View, TouchableOpacity } from "react-native";
 import { s } from "./styles";
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 import { Theme } from "@/styles/theme";
+import { router } from 'expo-router';
 
 export function PerticideCard({ pesticide }) {
   return (
@@ -15,7 +16,7 @@ export function PerticideCard({ pesticide }) {
 
       <TouchableOpacity
         style={s.details}
-        onPress={() => alert('clicou')}
+        onPress={() => router.push('/(perticide)/details')}
       >
         <Text style={s.name}>
           {pesticide.text}
