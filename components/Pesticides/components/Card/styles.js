@@ -1,5 +1,7 @@
 import { StyleSheet } from "react-native";
-import { Theme } from "@/styles/theme";
+import { TextType } from "../../../../styles/style";
+import { Theme } from "../../../../styles/theme";
+
 
 export const s = StyleSheet.create({
   content: {
@@ -35,11 +37,11 @@ export const s = StyleSheet.create({
   name: {
     color: Theme.dark.primaryText,
     fontWeight: '500',
-    fontSize: 16
+    fontSize: TextType.title,
   },
   registerNumber: {
     color: Theme.dark.secondaryText,
     fontWeight: '500',
-    fontSize: 11,
+    fontSize: TextType.subtitle,
   }
 })

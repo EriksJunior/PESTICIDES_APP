@@ -1,5 +1,7 @@
 import { StyleSheet } from "react-native";
 import { Theme } from "../../../../styles/theme"
+import { TextType } from "../../../../styles/style";
+
 
 export const s = StyleSheet.create({
   content: {
@@ -22,7 +24,7 @@ export const s = StyleSheet.create({
   },
   input: {
     flex: 1,
-    fontSize: 16,
+    fontSize: TextType.title,
     color: Theme.dark.inputColor,
   },
   contentIcon: {
