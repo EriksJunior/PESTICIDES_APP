@@ -24,7 +24,7 @@ export const s = StyleSheet.create({
   },
   input: {
     flex: 1,
-    fontSize: TextType.title,
+    fontSize: TextType.large,
     color: Theme.dark.inputColor,
   },
   contentIcon: {

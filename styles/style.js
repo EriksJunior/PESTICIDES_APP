@@ -1,4 +1,6 @@
 export const TextType = {
-  title: 16,
-  subtitle: 11
+  extraLarge: 20,
+  large: 16,
+  medium: 14,
+  low: 11,
 }

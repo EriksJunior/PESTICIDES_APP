@@ -29,6 +29,7 @@ export const s = StyleSheet.create({
     flex: 1,
     flexDirection: "row",
     justifyContent: "space-between",
+    alignItems: 'center',
     paddingTop: 16,
     paddingBottom: 16,
     paddingLeft: 16,
@@ -37,11 +38,11 @@ export const s = StyleSheet.create({
   name: {
     color: Theme.dark.primaryText,
     fontWeight: '500',
-    fontSize: TextType.title,
+    fontSize: TextType.large,
   },
   registerNumber: {
     color: Theme.dark.secondaryText,
     fontWeight: '500',
-    fontSize: TextType.subtitle,
+    fontSize: TextType.low,
   }
 })
