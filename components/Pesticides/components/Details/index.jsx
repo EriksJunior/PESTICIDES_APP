@@ -1,5 +1,5 @@
 import { router } from "expo-router";
-import { SimpleLineIcons } from "@expo/vector-icons";
+import { SimpleLineIcons, FontAwesome } from "@expo/vector-icons";
 import { View, TouchableOpacity, Text } from "react-native";
 
 import { Theme } from "../../../../styles/theme";
@@ -114,11 +114,84 @@ export function Details() {
           fontSize: 9,
           fontWeight: "500",
           textAlign: "right",
-          marginTop: 10
+          marginTop: 5,
         }}
       >
         Revizado em 06/11/2024
       </Text>
+
+      <View style={{ marginTop: 40, gap: 5 }}>
+        <Text
+          style={{
+            fontSize: TextType.large,
+            color: Theme.dark.primaryText,
+            fontWeight: "500",
+          }}
+        >
+          Downloads disponíveis
+        </Text>
+        <Text
+          style={{
+            fontSize: TextType.low,
+            color: Theme.dark.secondaryText,
+            fontWeight: "500",
+          }}
+        >
+          Realize downloads de BULA, FISQP e FET.
+        </Text>
+      </View>
+
+      <View
+        style={{
+          marginTop: 15,
+          width: "100%",
+          flexDirection: "row",
+          justifyContent: "space-between",
+          gap: 15,
+        }}
+      >
+        <View
+          style={{
+            flex: 1,
+            backgroundColor: Theme.dark.default,
+            elevation: 10,
+            borderRadius: 15,
+            justifyContent: "center",
+            alignItems: "center",
+            height: 80,
+          }}
+        ></View>
+
+        <View
+          style={{
+            flex: 1,
+            backgroundColor: Theme.dark.default,
+            elevation: 10,
+            borderRadius: 15,
+            justifyContent: "center",
+            alignItems: "center",
+            height: 80,
+          }}
+        >
+          <FontAwesome
+            name="warning"
+            size={40}
+            color={Theme.dark.primaryText}
+          />
+        </View>
+
+        <View
+          style={{
+            flex: 1,
+            backgroundColor: Theme.dark.default,
+            elevation: 10,
+            borderRadius: 15,
+            justifyContent: "center",
+            alignItems: "center",
+            height: 80,
+          }}
+        ></View>
+      </View>
     </>
   );
 }
