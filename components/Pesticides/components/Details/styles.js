@@ -4,10 +4,13 @@ import { TextType } from "../../../../styles/style";
 
 export const s = StyleSheet.create({
   header: {
-    height: 60,
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
+    padding: 16,
+    borderBottomWidth: 0.5,
+    borderBottomColor: '#3f3f3f',
+    borderBottomStyle: 'solid',
   },
   goBack: {
     width: 20,
@@ -24,17 +27,6 @@ export const s = StyleSheet.create({
     fontSize: TextType.low,
     color: Theme.dark.secondaryText,
     fontWeight: "500",
-  },
-  perticideCard: {
-    marginTop: 15,
-    padding: 10,
-    width: "100%",
-    height: 130,
-    backgroundColor: Theme.dark.default,
-    borderRadius: 15,
-    elevation: 10,
-    flexDirection: "row",
-    gap: 15,
   },
   providerImage: {
     width: 100,
@@ -72,22 +64,12 @@ export const s = StyleSheet.create({
   },
   content: {
     marginTop: 40,
-    gap: 5
   },
   contentDownloads: {
-    marginTop: 20,
+    marginTop: 10,
     width: "100%",
     flexDirection: "row",
     justifyContent: "space-between",
     gap: 15,
   },
-  downloadItem: {
-    flex: 1,
-    backgroundColor: Theme.dark.default,
-    elevation: 10,
-    borderRadius: 15,
-    justifyContent: "center",
-    alignItems: "center",
-    height: 80,
-  }
 })

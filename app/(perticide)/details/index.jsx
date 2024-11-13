@@ -13,7 +13,6 @@ export default function Index() {
         backgroundColor: Theme.dark.primary,
         flex: 1,
         paddingTop: statusBarHeight,
-        paddingHorizontal: 20
       }}
     >
       <Details />
