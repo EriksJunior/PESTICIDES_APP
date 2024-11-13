@@ -1,8 +1,10 @@
-import { Text, View, TouchableOpacity } from "react-native";
-import { s } from "./styles";
-import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
-import { Theme } from "@/styles/theme";
 import { router } from 'expo-router';
+import { Text, View, TouchableOpacity } from "react-native";
+
+import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
+
+import { Theme } from "../../../../styles/theme";
+import { s } from "./styles";
 
 export function PerticideCard({ pesticide }) {
   return (

@@ -1,10 +1,10 @@
 import { s } from "./styles";
-import { InputCustom } from "@/components/UI/Inputs/InputText";
+import { InputCustom } from "../../../UI/Inputs/InputText";
 import { PerticideCard } from "../Card";
 
 import { View, Text, ScrollView, FlatList } from "react-native";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
-import { Theme } from "@/styles/theme";
+import { Theme } from "../../../../styles/theme";
 
 export function Search() {
   const pesticides = [
