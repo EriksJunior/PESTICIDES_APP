@@ -10,12 +10,20 @@ export function Card({
   marginTop = 10,
   paddingHorizontal = 10,
   paddingVertical = 10,
+  gap = 15,
 }) {
   return (
     <View
       style={[
         s.card,
-        { height, flexDirection, marginTop, paddingHorizontal, paddingVertical},
+        {
+          height,
+          flexDirection,
+          marginTop,
+          paddingHorizontal,
+          paddingVertical,
+          gap,
+        },
         justifyCenter && { justifyContent: "center" },
         alignCenter && { alignItems: "center" },
       ]}

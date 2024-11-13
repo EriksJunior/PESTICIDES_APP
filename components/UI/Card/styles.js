@@ -7,6 +7,5 @@ export const s = StyleSheet.create({
     backgroundColor: Theme.dark.default,
     borderRadius: 15,
     elevation: 10,
-    gap: 15,
   },
 })

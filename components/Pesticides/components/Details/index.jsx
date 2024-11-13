@@ -89,11 +89,17 @@ export function Details() {
         </View>
 
         <View style={s.content}>
-          <Text style={s.title}>Culturas</Text>
+          <Text style={s.title}>Indicações de Uso</Text>
         </View>
 
         <View style={{ flexDirection: "row", gap: 15 }}>
-          <Card paddingHorizontal={15} paddingVertical={10}>
+          <Card
+            paddingHorizontal={15}
+            paddingVertical={10}
+            gap={10}
+            flexDirection="column"
+            height={"auto"}
+          >
             <View
               style={{
                 width: "100%",
@@ -102,7 +108,7 @@ export function Details() {
                 alignItems: "flex-start",
               }}
             >
-              <Text style={s.title}>Algodão</Text>
+              <Text style={s.title}>Feijão</Text>
 
               <View
                 style={{
@@ -118,17 +124,78 @@ export function Details() {
               >
                 <Entypo name="leaf" size={16} color={Theme.dark.primaryText} />
                 <Text style={[s.subTitle, { color: Theme.dark.primaryText }]}>
-                  Folha
+                  Grãos
                 </Text>
               </View>
             </View>
+
+            <TouchableOpacity
+              activeOpacity={0.6}
+              style={{
+                flex: 1,
+                backgroundColor: Theme.dark.primary,
+                padding: 10,
+                borderRadius: 10,
+                gap: 10,
+                elevation: 10
+              }}
+            >
+              <Text
+                style={[s.providerName, { color: Theme.dark.lightGreen }]}
+                numberOfLines={1}
+              >
+                Oryza sativa (Arroz vermelho) (Arroz vermelho) asd afd dsfsdfsdf
+                sdfsd
+              </Text>
+
+              <View
+                style={{
+                  flexDirection: "row",
+                  gap: 15,
+                  flex: 1,
+                  flexShrink: 1,
+                }}
+              >
+                <View style={{ gap: 5 }}>
+                  <View style={{ flexDirection: "row", gap: 5 }}>
+                    <Text
+                      style={[s.subTitle, { color: Theme.dark.primaryText }]}
+                    >
+                      Dose:
+                    </Text>
+
+                    <Text style={[s.subTitle]}>2 á 3 L p.c/ha</Text>
+                  </View>
+
+                  <View style={{ flexDirection: "row", gap: 5 }}>
+                    <Text
+                      style={[s.subTitle, { color: Theme.dark.primaryText }]}
+                    >
+                      Calda Terrestre:
+                    </Text>
+
+                    <Text style={[s.subTitle]}>120 L de calda/ha</Text>
+                  </View>
+
+                  <View style={{ flexDirection: "row", gap: 5 }}>
+                    <Text
+                      style={[s.subTitle, { color: Theme.dark.primaryText }]}
+                    >
+                      Calda Aérea:
+                    </Text>
+
+                    <Text style={[s.subTitle]}>20 á 40 L calda/ha (aéreo)</Text>
+                  </View>
+                </View>
+              </View>
+            </TouchableOpacity>
           </Card>
         </View>
 
         {/* <FlatList
           data={pesticides}
           keyExtractor={(pesticide) => pesticide.value}
-          renderItem={({ item }) => <PerticideCard pesticide={item} />}
+          renderItem={({ item }) => <PerticideCard pesticide={item} />}r
           ItemSeparatorComponent={() => (
             <View
               style={{
