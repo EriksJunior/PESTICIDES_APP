@@ -3,7 +3,7 @@ import { Text, View, TextInput } from "react-native";
 import { s } from "./styles";
 import { Theme } from "../../../../styles/theme";
 
-export function InputCustom({ rightIcon }) {
+export function InputCustom({ rightIcon, handleChange }) {
   const [isFocused, setIsFocused] = useState(false);
 
   return (
@@ -14,6 +14,9 @@ export function InputCustom({ rightIcon }) {
         placeholder="Pesquise por nome ou Nº Registro"
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
+        onChangeText={(text) => {
+          handleChange && handleChange(text)
+        }}
       />
 
       {rightIcon && (

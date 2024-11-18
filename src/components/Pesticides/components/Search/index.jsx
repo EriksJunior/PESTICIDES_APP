@@ -5,6 +5,7 @@ import { PerticideCard } from "../Card";
 import { View, Text, ScrollView, FlatList } from "react-native";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import { Theme } from "../../../../styles/theme";
+import { UseDebounce } from "../../../../utils/debounce";
 
 export function Search() {
   const pesticides = [
@@ -42,12 +43,28 @@ export function Search() {
     { text: "Gaxtoxin", value: "32" },
     { text: "Gaxtoxin", value: "33" },
   ];
+
+  const findPerticide = (text) => {
+    console.log(text);
+  };
+
+  const debouncedChanged = UseDebounce(findPerticide);
+
+  const handleChange = (item) => {
+    debouncedChanged(item);
+  };
+
   return (
     <View style={s.container}>
       <View style={s.header}>
         <InputCustom
+          handleChange={handleChange}
           rightIcon={
-            <MaterialCommunityIcons name={"leaf"} color={Theme.dark.lightGreen} size={24} />
+            <MaterialCommunityIcons
+              name={"leaf"}
+              color={Theme.dark.lightGreen}
+              size={24}
+            />
           }
         />
       </View>
