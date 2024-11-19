@@ -20,14 +20,14 @@ export function PerticideCard({ pesticide }) {
         style={s.details}
         onPress={() => router.push('/(perticide)/details')}
       >
-        <Text style={s.name}>
-          {pesticide.text}
+        <Text style={s.name} numberOfLines={1}>
+          {pesticide.nome_comum}
         </Text>
 
         <Text
-          style={s.registerNumber}
+          style={s.registerNumber}  numberOfLines={1}
         >
-          Nº 1554
+          Nº {pesticide.registro}
         </Text>
       </TouchableOpacity>
     </View>

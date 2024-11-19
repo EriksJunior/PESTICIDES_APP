@@ -2,57 +2,73 @@ import { s } from "./styles";
 import { InputCustom } from "../../../UI/Inputs/InputText";
 import { PerticideCard } from "../Card";
 
+import { useState, useEffect, useRef } from "react";
 import { View, Text, ScrollView, FlatList } from "react-native";
+import { ActivityIndicator } from "react-native";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
+
+import { SearchPerticide } from "../../../../services/pesticide";
+
 import { Theme } from "../../../../styles/theme";
 import { UseDebounce } from "../../../../utils/debounce";
 
 export function Search() {
-  const pesticides = [
-    { text: "Roundup", value: "1" },
-    { text: "Game", value: "2" },
-    { text: "Roundup WG", value: "3" },
-    { text: "Roundup Ultra", value: "4" },
-    { text: "Mega BR", value: "5" },
-    { text: "Gaxtoxin", value: "6" },
-    { text: "Gaxtoxin", value: "7" },
-    { text: "Gaxtoxin", value: "8" },
-    { text: "Gaxtoxin", value: "9" },
-    { text: "Gaxtoxin", value: "10" },
-    { text: "Gaxtoxin", value: "11" },
-    { text: "Gaxtoxin", value: "12" },
-    { text: "Gaxtoxin", value: "13" },
-    { text: "Gaxtoxin", value: "14" },
-    { text: "Gaxtoxin", value: "15" },
-    { text: "Gaxtoxin", value: "16" },
-    { text: "Gaxtoxin", value: "17" },
-    { text: "Gaxtoxin", value: "18" },
-    { text: "Gaxtoxin", value: "19" },
-    { text: "Gaxtoxin", value: "20" },
-    { text: "Gaxtoxin", value: "21" },
-    { text: "Gaxtoxin", value: "22" },
-    { text: "Gaxtoxin", value: "23" },
-    { text: "Gaxtoxin", value: "24" },
-    { text: "Gaxtoxin", value: "25" },
-    { text: "Gaxtoxin", value: "26" },
-    { text: "Gaxtoxin", value: "27" },
-    { text: "Gaxtoxin", value: "28" },
-    { text: "Gaxtoxin", value: "29" },
-    { text: "Gaxtoxin", value: "30" },
-    { text: "Gaxtoxin", value: "31" },
-    { text: "Gaxtoxin", value: "32" },
-    { text: "Gaxtoxin", value: "33" },
-  ];
-
-  const findPerticide = (text) => {
-    console.log(text);
-  };
+  const [pesticides, setPesticides] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isLoadingToScroll, setIsLoadingToScroll] = useState(false);
+  const [page, setPage] = useState(1);
 
   const debouncedChanged = UseDebounce(findPerticide);
+
+  const findPerticide = async (text) => {
+    try {
+      if (isLoading) return;
+      setIsLoading(true);
+
+      const result = await SearchPerticide(text || "", page);
+      setPesticides(result);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const loadingMorePesticides = async () => {
+    try {
+      if (isLoading) return;
+      setIsLoadingToScroll(true);
+
+      const newPage = page + 1;
+      const result = await SearchPerticide("", newPage);
+      setPesticides((state) => [...state, ...result]);
+
+      setPage(newPage);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsLoadingToScroll(false);
+    }
+  };
+
+  const handleScroll = ({ nativeEvent }) => {
+    const { contentOffset, contentSize, layoutMeasurement } = nativeEvent;
+
+    const isNearBottom =
+      contentOffset.y + layoutMeasurement.height >= contentSize.height - 50;
+
+    if (isNearBottom && !isLoadingToScroll) {
+      loadingMorePesticides();
+    }
+  };
 
   const handleChange = (item) => {
     debouncedChanged(item);
   };
+
+  useEffect(() => {
+    findPerticide();
+  }, []);
 
   return (
     <View style={s.container}>
@@ -60,11 +76,15 @@ export function Search() {
         <InputCustom
           handleChange={handleChange}
           rightIcon={
-            <MaterialCommunityIcons
-              name={"leaf"}
-              color={Theme.dark.lightGreen}
-              size={24}
-            />
+            isLoading ? (
+              <ActivityIndicator size="large" color={Theme.dark.lightGreen} />
+            ) : (
+              <MaterialCommunityIcons
+                name={"leaf"}
+                color={Theme.dark.lightGreen}
+                size={24}
+              />
+            )
           }
         />
       </View>
@@ -74,8 +94,10 @@ export function Search() {
         contentContainerStyle={{
           paddingHorizontal: 16,
           paddingTop: 28,
-          paddingBottom: 50,
+          paddingBottom: 60,
         }}
+        onScroll={handleScroll}
+        scrollEventThrottle={16}
       >
         <View style={{ paddingBottom: 16 }}>
           <Text style={{ color: "gray", fontWeight: 500, fontSize: 16 }}>
@@ -85,7 +107,7 @@ export function Search() {
 
         <FlatList
           data={pesticides}
-          keyExtractor={(pesticide) => pesticide.value}
+          keyExtractor={(pesticide) => pesticide.id}
           renderItem={({ item }) => <PerticideCard pesticide={item} />}
           ItemSeparatorComponent={() => (
             <View
@@ -98,6 +120,14 @@ export function Search() {
           scrollEnabled={false}
           showsVerticalScrollIndicator={false}
         />
+
+        {isLoadingToScroll && (
+          <ActivityIndicator
+            size="large"
+            color={Theme.dark.lightGreen}
+            style={{ marginVertical: 20 }}
+          />
+        )}
       </ScrollView>
     </View>
   );
