@@ -2,7 +2,7 @@ import { s } from "./styles";
 import { InputCustom } from "../../../UI/Inputs/InputText";
 import { PerticideCard } from "../Card";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { View, Text, ScrollView, FlatList } from "react-native";
 import { ActivityIndicator } from "react-native";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
@@ -66,6 +66,26 @@ export function Search() {
     debouncedChanged(item);
   };
 
+  const memoizedItems = useMemo(() => {
+    return (
+      <FlatList
+        data={pesticides}
+        keyExtractor={(pesticide) => pesticide.id}
+        renderItem={({ item }) => <PerticideCard pesticide={item} />}
+        ItemSeparatorComponent={() => (
+          <View
+            style={{
+              flex: 1,
+              height: 5,
+            }}
+          ></View>
+        )}
+        scrollEnabled={false}
+        showsVerticalScrollIndicator={false}
+      />
+    );
+  }, [pesticides]);
+
   useEffect(() => {
     findPerticide();
   }, []);
@@ -105,21 +125,7 @@ export function Search() {
           </Text>
         </View>
 
-        <FlatList
-          data={pesticides}
-          keyExtractor={(pesticide) => pesticide.id}
-          renderItem={({ item }) => <PerticideCard pesticide={item} />}
-          ItemSeparatorComponent={() => (
-            <View
-              style={{
-                flex: 1,
-                height: 5,
-              }}
-            ></View>
-          )}
-          scrollEnabled={false}
-          showsVerticalScrollIndicator={false}
-        />
+        {memoizedItems}
 
         {isLoadingToScroll && (
           <ActivityIndicator
