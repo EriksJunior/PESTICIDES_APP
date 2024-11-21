@@ -2,7 +2,7 @@ import { s } from "./styles";
 import { InputCustom } from "../../../UI/Inputs/InputText";
 import { PerticideCard } from "../Card";
 
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect } from "react";
 import { View, Text, ScrollView, FlatList } from "react-native";
 import { ActivityIndicator } from "react-native";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
@@ -13,19 +13,19 @@ import { Theme } from "../../../../styles/theme";
 import { UseDebounce } from "../../../../utils/debounce";
 
 export function Search() {
+  const [textToScroll, setTextToScroll] = useState("");
   const [pesticides, setPesticides] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isLoadingToScroll, setIsLoadingToScroll] = useState(false);
   const [page, setPage] = useState(1);
 
-  const debouncedChanged = UseDebounce(findPerticide);
-
   const findPerticide = async (text) => {
     try {
       if (isLoading) return;
       setIsLoading(true);
+      setTextToScroll(text);
 
-      const result = await SearchPerticide(text || "", page);
+      const result = await SearchPerticide(text || "", 1);
       setPesticides(result);
     } catch (error) {
       console.log(error);
@@ -34,13 +34,15 @@ export function Search() {
     }
   };
 
+  const debouncedChanged = UseDebounce(findPerticide);
+
   const loadingMorePesticides = async () => {
     try {
       if (isLoading) return;
       setIsLoadingToScroll(true);
 
       const newPage = page + 1;
-      const result = await SearchPerticide("", newPage);
+      const result = await SearchPerticide(textToScroll || "", newPage);
       setPesticides((state) => [...state, ...result]);
 
       setPage(newPage);
@@ -65,26 +67,6 @@ export function Search() {
   const handleChange = (item) => {
     debouncedChanged(item);
   };
-
-  const memoizedItems = useMemo(() => {
-    return (
-      <FlatList
-        data={pesticides}
-        keyExtractor={(pesticide) => pesticide.id}
-        renderItem={({ item }) => <PerticideCard pesticide={item} />}
-        ItemSeparatorComponent={() => (
-          <View
-            style={{
-              flex: 1,
-              height: 5,
-            }}
-          ></View>
-        )}
-        scrollEnabled={false}
-        showsVerticalScrollIndicator={false}
-      />
-    );
-  }, [pesticides]);
 
   useEffect(() => {
     findPerticide();
@@ -114,7 +96,7 @@ export function Search() {
         contentContainerStyle={{
           paddingHorizontal: 16,
           paddingTop: 28,
-          paddingBottom: 60,
+          paddingBottom: 100,
         }}
         onScroll={handleScroll}
         scrollEventThrottle={16}
@@ -125,7 +107,22 @@ export function Search() {
           </Text>
         </View>
 
-        {memoizedItems}
+        <FlatList
+          data={pesticides}
+          keyExtractor={(pesticide) => pesticide.id}
+          renderItem={({ item }) => <PerticideCard pesticide={item} />}
+          ItemSeparatorComponent={() => (
+            <View
+              style={{
+                flex: 1,
+                height: 5,
+              }}
+            ></View>
+          )}
+          scrollEnabled={false}
+          showsVerticalScrollIndicator={false}
+          removeClippedSubviews={true}
+        />
 
         {isLoadingToScroll && (
           <ActivityIndicator
