@@ -8,29 +8,28 @@ import {
 import {
   View,
   TouchableOpacity,
-  Text,
   ScrollView,
   FlatList,
 } from "react-native";
 
-import { s } from "./styles";
+import * as D from "./styles";
+
 import { Theme } from "../../../../styles/theme";
 import { Card } from "../../../UI/Card";
 
 export function Details() {
   return (
     <>
-      <View style={s.header}>
-        <TouchableOpacity
+      <D.Header>
+        <D.GoBack
           activeOpacity={0.6}
           onPress={() => router.navigate("/(search)")}
-          style={s.goBack}
         >
           <SimpleLineIcons name="arrow-left" size={15} color="white" />
-        </TouchableOpacity>
+        </D.GoBack>
 
-        <Text style={s.title}>Detalhes</Text>
-      </View>
+        <D.Title>Detalhes</D.Title>
+      </D.Header>
 
       <ScrollView
         showsVerticalScrollIndicator={false}
@@ -41,28 +40,26 @@ export function Details() {
         }}
       >
         <Card>
-          <View style={s.providerImage}></View>
+          <D.ProviderImage></D.ProviderImage>
 
-          <View style={s.perticideDetails}>
-            <Text style={s.registerNumber}>Nº 15533</Text>
+          <D.PerticideDetails>
+            <D.RegisterNumber>Nº 15533</D.RegisterNumber>
 
             <View style={{ gap: 5 }}>
-              <Text style={s.title}>Roundup WG</Text>
-              <Text style={s.providerName}>Fabricante teste bla bla</Text>
+              <D.Title>Roundup WG</D.Title>
+              <D.ProviderName numberOfLines={2}>Fabricante teste bla bla</D.ProviderName>
             </View>
-          </View>
+          </D.PerticideDetails>
         </Card>
 
-        <Text style={s.lastReview}>Revizado em 06/11/2024</Text>
+        <D.LastReview>Revizado em 06/11/2024</D.LastReview>
 
-        <View style={s.content}>
-          <Text style={s.title}>Downloads disponíveis</Text>
-          <Text style={s.subTitle}>
-            Realize downloads de BULA, FISQP e FET.
-          </Text>
-        </View>
+        <D.Content>
+          <D.Title>Downloads disponíveis</D.Title>
+          <D.Subtitle>Realize downloads de BULA, FISQP e FET.</D.Subtitle>
+        </D.Content>
 
-        <View style={s.contentDownloads}>
+        <D.ContentDownloads>
           <Card height={80} marginTop={0} justifyCenter alignCenter>
             <FontAwesome5
               name="file-pdf"
@@ -86,11 +83,11 @@ export function Details() {
               color={Theme.dark.primaryText}
             />
           </Card>
-        </View>
+        </D.ContentDownloads>
 
-        <View style={s.content}>
-          <Text style={s.title}>Indicações de Uso</Text>
-        </View>
+        <D.Content>
+          <D.Title>Indicações de Uso</D.Title>
+        </D.Content>
 
         <View style={{ flexDirection: "row", gap: 15 }}>
           <Card
@@ -108,7 +105,7 @@ export function Details() {
                 alignItems: "flex-start",
               }}
             >
-              <Text style={s.title}>Feijão</Text>
+              <D.Title>Feijão</D.Title>
 
               <View
                 style={{
@@ -123,9 +120,7 @@ export function Details() {
                 }}
               >
                 <Entypo name="leaf" size={16} color={Theme.dark.primaryText} />
-                <Text style={[s.subTitle, { color: Theme.dark.primaryText }]}>
-                  Grãos
-                </Text>
+                <D.Subtitle $color={Theme.dark.primaryText}>Grãos</D.Subtitle>
               </View>
             </View>
 
@@ -137,16 +132,15 @@ export function Details() {
                 padding: 10,
                 borderRadius: 10,
                 gap: 10,
-                elevation: 10
+                elevation: 10,
               }}
             >
-              <Text
-                style={[s.providerName, { color: Theme.dark.lightGreen }]}
+              <D.DiagnosticName
                 numberOfLines={1}
               >
                 Oryza sativa (Arroz vermelho) (Arroz vermelho) asd afd dsfsdfsdf
                 sdfsd
-              </Text>
+              </D.DiagnosticName>
 
               <View
                 style={{
@@ -157,34 +151,52 @@ export function Details() {
                 }}
               >
                 <View style={{ gap: 5 }}>
-                  <View style={{ flexDirection: "row", gap: 5 }}>
-                    <Text
-                      style={[s.subTitle, { color: Theme.dark.primaryText }]}
-                    >
+                  <View
+                    style={{
+                      flexDirection: "row",
+                      gap: 5,
+                      alignItems: "center",
+                    }}
+                  >
+                    <D.Subtitle $color={Theme.dark.primaryText}>
                       Dose:
-                    </Text>
+                    </D.Subtitle>
 
-                    <Text style={[s.subTitle]}>2 á 3 L p.c/ha</Text>
+                    <D.Subtitle style={{ marginTop: 1.3 }}>
+                      2 á 3 L p.c/ha
+                    </D.Subtitle>
                   </View>
 
-                  <View style={{ flexDirection: "row", gap: 5 }}>
-                    <Text
-                      style={[s.subTitle, { color: Theme.dark.primaryText }]}
-                    >
+                  <View
+                    style={{
+                      flexDirection: "row",
+                      gap: 5,
+                      alignItems: "center",
+                    }}
+                  >
+                    <D.Subtitle $color={Theme.dark.primaryText}>
                       Calda Terrestre:
-                    </Text>
+                    </D.Subtitle>
 
-                    <Text style={[s.subTitle]}>120 L de calda/ha</Text>
+                    <D.Subtitle style={{ marginTop: 1.3 }}>
+                      120 L de calda/ha
+                    </D.Subtitle>
                   </View>
 
-                  <View style={{ flexDirection: "row", gap: 5 }}>
-                    <Text
-                      style={[s.subTitle, { color: Theme.dark.primaryText }]}
-                    >
+                  <View
+                    style={{
+                      flexDirection: "row",
+                      gap: 5,
+                      alignItems: "center",
+                    }}
+                  >
+                    <D.Subtitle $color={Theme.dark.primaryText}>
                       Calda Aérea:
-                    </Text>
+                    </D.Subtitle>
 
-                    <Text style={[s.subTitle]}>20 á 40 L calda/ha (aéreo)</Text>
+                    <D.Subtitle style={{ marginTop: 1.3 }}>
+                      20 á 40 L calda/ha (aéreo)
+                    </D.Subtitle>
                   </View>
                 </View>
               </View>

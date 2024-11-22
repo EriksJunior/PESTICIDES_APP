@@ -1,52 +1,54 @@
-import { StyleSheet } from "react-native";
+import styled from "styled-components/native";
+
 import { TextType } from "../../../../styles/style";
 import { Theme } from "../../../../styles/theme";
 
+export const Content = styled.View`
+  flex: 1;
+  height: 60px;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  background-color: ${Theme.dark.default};
+  border-radius: 5px;
+`
 
-export const s = StyleSheet.create({
-  content: {
-    flex: 1,
-    height: 60,
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 10,
-    backgroundColor: Theme.dark.default,
-    borderRadius: 5,
-  },
-  pdf: {
-    height: "100%",
-    width: 50,
-    borderWidth: 0.5,
-    backgroundColor: "#187b1363",
-    borderStyle: "solid",
-    alignItems: "center",
-    justifyContent: "center",
-    borderColor: "transparent",
-    borderTopLeftRadius: 5,
-    borderBottomLeftRadius: 5,
-  },
-  details: {
-    flex: 1,
-    gap: 10,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: 'center',
-    paddingTop: 16,
-    paddingBottom: 16,
-    paddingLeft: 16,
-    paddingRight: 8,
-  },
-  name: {
-    color: Theme.dark.primaryText,
-    fontWeight: '500',
-    fontSize: TextType.medium,
-    flex: 1
-  },
-  registerNumber: {
-    color: Theme.dark.secondaryText,
-    fontWeight: '500',
-    fontSize: TextType.low,
-    flexShrink: 1,
-    maxWidth: 100
-  }
-})
+export const Pdf = styled.TouchableOpacity`
+  height: 100%;
+  width: 50px;
+  border-width: 0.5px;
+  background-color: #187b1363;
+  border-style: solid;
+  align-items: center;
+  justify-content: center;
+  border-color: transparent;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+`
+
+export const Details = styled.TouchableOpacity`
+  flex: 1;
+  gap: 10px;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  padding-left: 16px;
+  padding-right: 8px;
+`
+
+export const Name = styled.Text`
+  flex: 1;
+  color: ${Theme.dark.primaryText};
+  font-weight: 500;
+  font-size: ${TextType.medium + 'px'};
+`
+
+export const registerNumber = styled.Text`
+  max-width: 100px;
+  flex-shrink: 1;
+  color: ${Theme.dark.secondaryText};
+  font-weight: 500;
+  font-size: ${TextType.low + 'px'};
+`

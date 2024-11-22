@@ -1,36 +1,40 @@
-import { StyleSheet } from "react-native";
+import styled from "styled-components/native";
+
 import { Theme } from "../../../../styles/theme"
 import { TextType } from "../../../../styles/style";
 
+export const Content = styled.View`
+  flex: 1;
+  border-radius: 5px;
+  padding: 5px;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 5px;
 
-export const s = StyleSheet.create({
-  content: {
-    flex: 1,
-    borderRadius: 5,
-    padding: 5,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    gap: 5,
-  },
-  focused: {
-    borderWidth: 2,
-    borderStyle: 'solid',
-    borderColor: Theme.dark.lightGreen,
-  },
-  notFocused: {
-    borderWidth: 2,
-    borderStyle: 'solid',
-    borderColor: Theme.dark.secondaryText,
-  },
-  input: {
-    flex: 1,
-    fontSize: TextType.large,
-    color: Theme.dark.inputColor,
-  },
-  contentIcon: {
-    height: 35,
-    width: 35,
-    justifyContent: "center",
-    alignItems: "center",
+  ${(props) => props.$isFocused ?
+    `
+      border-width: 2px;
+      border-style: solid;
+      borderColor: ${Theme.dark.lightGreen}
+    `
+    :
+    `
+      border-width: 2px;
+      border-style: solid;
+      borderColor: ${Theme.dark.secondaryText}
+    `
   }
-})
+`
+
+export const InputText = styled.TextInput`
+  flex: 1;
+  font-size: ${TextType.large + 'px'};
+  color: ${Theme.dark.inputColor};
+`
+
+export const ContentIcon = styled.View`
+  height: 35px;
+  width: 35px;
+  justify-content: center;
+  align-items: center;
+`

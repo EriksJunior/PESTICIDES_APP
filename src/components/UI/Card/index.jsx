@@ -1,5 +1,7 @@
 import { View } from "react-native";
-import { s } from "./styles";
+
+import * as C from "./styles";
+import { Theme } from "../../../styles/theme";
 
 export function Card({
   children,
@@ -13,22 +15,18 @@ export function Card({
   gap = 15,
 }) {
   return (
-    <View
-      style={[
-        s.card,
-        {
-          height,
-          flexDirection,
-          marginTop,
-          paddingHorizontal,
-          paddingVertical,
-          gap,
-        },
-        justifyCenter && { justifyContent: "center" },
-        alignCenter && { alignItems: "center" },
-      ]}
+    <C.Card
+      $gap={gap}
+      $backgroundColor={Theme.dark.default}
+      $height={height}
+      $flexDirection={flexDirection}
+      $justifyCenter={justifyCenter}
+      $alignCenter={alignCenter}
+      $marginTop={marginTop}
+      $paddingHorizontal={paddingHorizontal}
+      $paddingVertical={paddingVertical}
     >
       {children}
-    </View>
+    </C.Card>
   );
 }

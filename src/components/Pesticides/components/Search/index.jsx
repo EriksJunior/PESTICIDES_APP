@@ -1,4 +1,3 @@
-import { s } from "./styles";
 import { InputCustom } from "../../../UI/Inputs/InputText";
 import { PerticideCard } from "../Card";
 
@@ -9,6 +8,7 @@ import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 
 import { SearchPerticide } from "../../../../services/pesticide";
 
+import { Container, Header } from "./styles";
 import { Theme } from "../../../../styles/theme";
 import { UseDebounce } from "../../../../utils/debounce";
 
@@ -73,8 +73,8 @@ export function Search() {
   }, []);
 
   return (
-    <View style={s.container}>
-      <View style={s.header}>
+    <Container>
+      <Header>
         <InputCustom
           handleChange={handleChange}
           rightIcon={
@@ -89,7 +89,7 @@ export function Search() {
             )
           }
         />
-      </View>
+      </Header>
 
       <ScrollView
         showsVerticalScrollIndicator={false}
@@ -132,6 +132,6 @@ export function Search() {
           />
         )}
       </ScrollView>
-    </View>
+    </Container>
   );
 }

@@ -1,35 +1,28 @@
-import { router } from 'expo-router';
-import { Text, View, TouchableOpacity } from "react-native";
+import { router } from "expo-router";
 
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 
+import * as C from "./styles";
 import { Theme } from "../../../../styles/theme";
-import { s } from "./styles";
 
 export function PerticideCard({ pesticide }) {
   return (
-    <View style={s.content}>
-      <TouchableOpacity
-        activeOpacity={0.6}
-        style={s.pdf}
-      >
-        <FontAwesome6 name="file-pdf" size={24} color={Theme.dark.primaryText} />
-      </TouchableOpacity>
+    <C.Content>
+      <C.Pdf activeOpacity={0.6}>
+        <FontAwesome6
+          name="file-pdf"
+          size={24}
+          color={Theme.dark.primaryText}
+        />
+      </C.Pdf>
 
-      <TouchableOpacity
-        style={s.details}
-        onPress={() => router.push('/(perticide)/details')}
-      >
-        <Text style={s.name} numberOfLines={1}>
-          {pesticide.nome_comum}
-        </Text>
+      <C.Details onPress={() => router.push("/(perticide)/details")}>
+        <C.Name numberOfLines={1}>{pesticide.nome_comum}</C.Name>
 
-        <Text
-          style={s.registerNumber}  numberOfLines={1}
-        >
+        <C.registerNumber numberOfLines={1}>
           Nº {pesticide.registro}
-        </Text>
-      </TouchableOpacity>
-    </View>
+        </C.registerNumber>
+      </C.Details>
+    </C.Content>
   );
 }
