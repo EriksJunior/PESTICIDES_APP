@@ -1,8 +1,9 @@
 import { InputCustom } from "../../../UI/Inputs/InputText";
-import { PerticideCard } from "../Card";
+import { PesticideCard } from "../Card";
+import { Skeleton } from "../../../UI/Skeleton";
 
-import { useState, useEffect } from "react";
-import { View, Text, ScrollView, FlatList } from "react-native";
+import { useState, useEffect, useRef } from "react";
+import { View, Text, FlatList } from "react-native";
 import { ActivityIndicator } from "react-native";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 
@@ -17,6 +18,7 @@ export function Search() {
   const [pesticides, setPesticides] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isLoadingToScroll, setIsLoadingToScroll] = useState(false);
+  const [viewableItems, setViewableItems] = useState([]);
   const [page, setPage] = useState(1);
 
   const findPerticide = async (text) => {
@@ -37,39 +39,42 @@ export function Search() {
   const debouncedChanged = UseDebounce(findPerticide);
 
   const loadingMorePesticides = async () => {
-    try {
-      if (isLoading) return;
-      setIsLoadingToScroll(true);
+    if (isLoadingToScroll) return;
 
-      const newPage = page + 1;
-      const result = await SearchPerticide(textToScroll || "", newPage);
-      setPesticides((state) => [...state, ...result]);
+    setIsLoadingToScroll(true);
 
-      setPage(newPage);
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setIsLoadingToScroll(false);
-    }
-  };
+    const newPage = page + 1;
+    const result = await SearchPerticide(textToScroll || "", newPage);
 
-  const handleScroll = ({ nativeEvent }) => {
-    const { contentOffset, contentSize, layoutMeasurement } = nativeEvent;
+    setPesticides((state) => [...state, ...result]);
+    setIsLoadingToScroll(false);
 
-    const isNearBottom =
-      contentOffset.y + layoutMeasurement.height >= contentSize.height - 50;
-
-    if (isNearBottom && !isLoadingToScroll) {
-      loadingMorePesticides();
-    }
+    setPage(newPage);
   };
 
   const handleChange = (item) => {
     debouncedChanged(item);
   };
 
+  const onViewableItemsChanged = useRef(({ viewableItems }) => {
+    setViewableItems(viewableItems.map((item) => item.key));
+  }).current;
+
+  const renderItem = ({ item }) => {
+    if (!viewableItems.includes(item?.id)) {
+      return <Skeleton style={{ marginVertical: 20 }} />;
+    }
+
+    return <PesticideCard pesticide={item} />;
+  };
+
   useEffect(() => {
     findPerticide();
+
+    return () => {
+      setPesticides([]);
+      setPage(1);
+    };
   }, []);
 
   return (
@@ -91,47 +96,47 @@ export function Search() {
         />
       </Header>
 
-      <ScrollView
+      <FlatList
+        onEndReached={loadingMorePesticides}
+        onEndReachedThreshold={1.5}
+        scrollEventThrottle={16}
+        initialNumToRender={15}
+        maxToRenderPerBatch={8}
+        windowSize={15}
         showsVerticalScrollIndicator={false}
+        removeClippedSubviews={true}
+        onViewableItemsChanged={onViewableItemsChanged}
         contentContainerStyle={{
           paddingHorizontal: 16,
           paddingTop: 28,
-          paddingBottom: 100,
+          paddingBottom: 20,
         }}
-        onScroll={handleScroll}
-        scrollEventThrottle={16}
-      >
-        <View style={{ paddingBottom: 16 }}>
-          <Text style={{ color: "gray", fontWeight: 500, fontSize: 16 }}>
-            Agrotoxicos
-          </Text>
-        </View>
-
-        <FlatList
-          data={pesticides}
-          keyExtractor={(pesticide) => pesticide.id}
-          renderItem={({ item }) => <PerticideCard pesticide={item} />}
-          ItemSeparatorComponent={() => (
-            <View
-              style={{
-                flex: 1,
-                height: 5,
-              }}
-            ></View>
-          )}
-          scrollEnabled={false}
-          showsVerticalScrollIndicator={false}
-          removeClippedSubviews={true}
-        />
-
-        {isLoadingToScroll && (
-          <ActivityIndicator
-            size="large"
-            color={Theme.dark.lightGreen}
-            style={{ marginVertical: 20 }}
-          />
+        ListHeaderComponent={
+          <View style={{ paddingBottom: 16 }}>
+            <Text style={{ color: "gray", fontWeight: 500, fontSize: 16 }}>
+              Agrotoxicos
+            </Text>
+          </View>
+        }
+        data={pesticides}
+        keyExtractor={(pesticide) => pesticide.id}
+        renderItem={renderItem}
+        ItemSeparatorComponent={() => (
+          <View
+            style={{
+              flex: 1,
+              height: 5,
+            }}
+          ></View>
         )}
-      </ScrollView>
+        // ListFooterComponent={
+        //   <ActivityIndicator
+        //     size="large"
+        //     color={Theme.dark.lightGreen}
+        //     style={{ marginVertical: 20 }}
+        //   />
+        // }
+      />
     </Container>
   );
 }

@@ -5,7 +5,7 @@ import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 import * as C from "./styles";
 import { Theme } from "../../../../styles/theme";
 
-export function PerticideCard({ pesticide }) {
+export function PesticideCard({ pesticide }) {
   return (
     <C.Content>
       <C.Pdf activeOpacity={0.6}>
