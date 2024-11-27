@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { router } from "expo-router";
 import {
   SimpleLineIcons,
@@ -12,10 +12,25 @@ import * as D from "./styles";
 
 import { Theme } from "../../../../styles/theme";
 import { Card } from "../../../UI/Card";
+import { FindPerticideDetails } from "../../../../services/pesticide";
+import { TextType } from "../../../../styles/style";
 
-export function Details(pesticideId) {
+export function Details({ pesticideId }) {
+  const [details, setDetails] = useState({});
+
+  const findPerticideDetails = async () => {
+    const pesticeDetails = await FindPerticideDetails(pesticideId);
+    setDetails(pesticeDetails);
+  };
+
+  const handleConcentration = (concentration, und) => {
+    if (!concentration && !und) return "*N/A";
+
+    return `${concentration} ${und}`;
+  };
+
   useEffect(() => {
-    console.log("montou");
+    findPerticideDetails();
   }, []);
 
   return (
@@ -44,12 +59,14 @@ export function Details(pesticideId) {
             <D.ProviderImage></D.ProviderImage>
 
             <D.PerticideDetails>
-              <D.RegisterNumber>Nº 15533</D.RegisterNumber>
+              <D.RegisterNumber>Nº {details.registro}</D.RegisterNumber>
 
               <View style={{ gap: 5 }}>
-                <D.Title>Roundup WG</D.Title>
+                <D.Title $fontSize={TextType.medium}>
+                  {details?.nome_comum}
+                </D.Title>
                 <D.ProviderName numberOfLines={2}>
-                  Fabricante teste bla bla
+                  {details?.empresa?.razao_social}
                 </D.ProviderName>
               </View>
             </D.PerticideDetails>
@@ -124,12 +141,10 @@ export function Details(pesticideId) {
                 >
                   <D.Subtitle>Ingrediente Ativo</D.Subtitle>
 
-                  <View style={{ gap: 3, marginTop: 10 }}>
+                  <View style={{ gap: 3, marginTop: 5 }}>
                     <D.Title $fontSize={12}>
-                      Equivalente ácido de Glifosato
+                      {details?.ingredientesAtivo?.nome_comum}
                     </D.Title>
-
-                    <D.Title $fontSize={12}>Glifosato</D.Title>
                   </View>
                 </View>
 
@@ -141,10 +156,109 @@ export function Details(pesticideId) {
                 >
                   <D.Subtitle>Concentração</D.Subtitle>
 
-                  <View style={{ gap: 3, marginTop: 10 }}>
-                    <D.Title $fontSize={12}>370 g/L</D.Title>
+                  <View style={{ gap: 3, marginTop: 5 }}>
+                    <D.Title $fontSize={12}>
+                      {handleConcentration(
+                        details?.concentracao_ia,
+                        details?.unidade_medida
+                      )}
+                    </D.Title>
+                  </View>
+                </View>
+              </Card>
+            </View>
+          </D.Content>
 
-                    <D.Title $fontSize={12}>445 g/L</D.Title>
+          <D.Content>
+            <D.Title>Classificação</D.Title>
+
+            <View style={{ flex: 1 }}>
+              <Card
+                paddingHorizontal={15}
+                paddingVertical={10}
+                height={"auto"}
+                justify="space-between"
+                flexDirection="column"
+                flexWrap
+              >
+                <View
+                  style={{
+                    flexDirection: "row",
+                    justifyContent: "space-between",
+                    flexWrap: "wrap",
+                  }}
+                >
+                  <View style={{ width: "50%" }}>
+                    <D.Subtitle>Grupos químicos</D.Subtitle>
+
+                    <View style={{ gap: 3, marginTop: 5 }}>
+                      <D.Title $fontSize={12}>
+                        {details?.ingredientesAtivo?.gruposQuimico?.nome ||
+                          "*N/A"}
+                      </D.Title>
+                    </View>
+                  </View>
+
+                  <View style={{ width: "50%" }}>
+                    <D.Subtitle>Formulação</D.Subtitle>
+
+                    <View style={{ gap: 3, marginTop: 5 }}>
+                      <D.Title $fontSize={12}>
+                        {details?.formulacoe?.nome || "*N/A"}
+                      </D.Title>
+                    </View>
+                  </View>
+                </View>
+
+                <View
+                  style={{
+                    flexDirection: "row",
+                    justifyContent: "space-between",
+                  }}
+                >
+                  <View style={{ width: "50%" }}>
+                    <D.Subtitle>Classe Agronômica</D.Subtitle>
+
+                    <View style={{ gap: 3, marginTop: 5 }}>
+                      <D.Title $fontSize={12}>Herbicida</D.Title>
+                    </View>
+                  </View>
+
+                  <View style={{ width: "50%" }}>
+                    <D.Subtitle>Modo de ação</D.Subtitle>
+
+                    <View style={{ gap: 3, marginTop: 5 }}>
+                      <D.Title $fontSize={12}>
+                        {details?.ph_ideal || "*N/A"}
+                      </D.Title>
+                    </View>
+                  </View>
+                </View>
+
+                <View
+                  style={{
+                    flexDirection: "row",
+                    justifyContent: "space-between",
+                  }}
+                >
+                  <View style={{ width: "50%" }}>
+                    <D.Subtitle>Toxicológica</D.Subtitle>
+
+                    <View style={{ gap: 3, marginTop: 5 }}>
+                      <D.Title $fontSize={12}>
+                        {details?.classesToxicologica?.nome || "*N/A"}
+                      </D.Title>
+                    </View>
+                  </View>
+
+                  <View style={{ width: "50%" }}>
+                    <D.Subtitle>Ambiental</D.Subtitle>
+
+                    <View style={{ gap: 3, marginTop: 5 }}>
+                      <D.Title $fontSize={12}>
+                        {details?.classesAmbientais?.nome || "*N/A"}
+                      </D.Title>
+                    </View>
                   </View>
                 </View>
               </Card>
@@ -170,7 +284,7 @@ export function Details(pesticideId) {
                     alignItems: "center",
                   }}
                 >
-                  <D.Title $color={'rgb(149 149 149)'}>Feijão</D.Title>
+                  <D.Title $color={"rgb(149 149 149)"}>Feijão</D.Title>
 
                   <View
                     style={{

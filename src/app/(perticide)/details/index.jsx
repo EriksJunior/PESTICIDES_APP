@@ -17,7 +17,7 @@ export default function Index() {
         paddingTop: statusBarHeight,
       }}
     >
-      <Details pesticideId={id}/>
+      {id && <Details pesticideId={id} />}
     </View>
   );
 }
