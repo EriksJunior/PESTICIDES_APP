@@ -1,3 +1,4 @@
+import { useLocalSearchParams } from "expo-router";
 import Constants from "expo-constants";
 import { View } from "react-native";
 
@@ -6,6 +7,7 @@ import { Details } from "../../../components/Pesticides/components/Details";
 
 export default function Index() {
   const statusBarHeight = Constants.statusBarHeight;
+  const { id } = useLocalSearchParams();
 
   return (
     <View
@@ -15,7 +17,7 @@ export default function Index() {
         paddingTop: statusBarHeight,
       }}
     >
-      <Details />
+      <Details pesticideId={id}/>
     </View>
   );
 }

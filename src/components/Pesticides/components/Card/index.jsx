@@ -16,7 +16,7 @@ export function PesticideCard({ pesticide }) {
         />
       </C.Pdf>
 
-      <C.Details onPress={() => router.push("/(perticide)/details")}>
+      <C.Details onPress={() => router.push(`/(perticide)/details?id=${pesticide.id}`)}>
         <C.Name numberOfLines={1}>{pesticide.nome_comum}</C.Name>
 
         <C.registerNumber numberOfLines={1}>

@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { router } from "expo-router";
 import {
   SimpleLineIcons,
@@ -5,19 +6,18 @@ import {
   FontAwesome5,
   Entypo,
 } from "@expo/vector-icons";
-import {
-  View,
-  TouchableOpacity,
-  ScrollView,
-  FlatList,
-} from "react-native";
+import { View, TouchableOpacity, ScrollView, FlatList } from "react-native";
 
 import * as D from "./styles";
 
 import { Theme } from "../../../../styles/theme";
 import { Card } from "../../../UI/Card";
 
-export function Details() {
+export function Details(pesticideId) {
+  useEffect(() => {
+    console.log("montou");
+  }, []);
+
   return (
     <>
       <D.Header>
@@ -39,170 +39,241 @@ export function Details() {
           paddingHorizontal: 20,
         }}
       >
-        <Card>
-          <D.ProviderImage></D.ProviderImage>
+        <View style={{ flex: 1 }}>
+          <Card>
+            <D.ProviderImage></D.ProviderImage>
 
-          <D.PerticideDetails>
-            <D.RegisterNumber>Nº 15533</D.RegisterNumber>
+            <D.PerticideDetails>
+              <D.RegisterNumber>Nº 15533</D.RegisterNumber>
 
-            <View style={{ gap: 5 }}>
-              <D.Title>Roundup WG</D.Title>
-              <D.ProviderName numberOfLines={2}>Fabricante teste bla bla</D.ProviderName>
-            </View>
-          </D.PerticideDetails>
-        </Card>
+              <View style={{ gap: 5 }}>
+                <D.Title>Roundup WG</D.Title>
+                <D.ProviderName numberOfLines={2}>
+                  Fabricante teste bla bla
+                </D.ProviderName>
+              </View>
+            </D.PerticideDetails>
+          </Card>
+        </View>
 
         <D.LastReview>Revizado em 06/11/2024</D.LastReview>
 
-        <D.Content>
-          <D.Title>Downloads disponíveis</D.Title>
-          <D.Subtitle>Realize downloads de BULA, FISQP e FET.</D.Subtitle>
-        </D.Content>
+        <D.Container>
+          <D.Content $marginTop={30}>
+            <D.Title>Downloads disponíveis</D.Title>
+            <D.Subtitle>Realize downloads de BULA, FISQP e FET.</D.Subtitle>
 
-        <D.ContentDownloads>
-          <Card height={80} marginTop={0} justifyCenter alignCenter>
-            <FontAwesome5
-              name="file-pdf"
-              size={40}
-              color={Theme.dark.primaryText}
-            />
-          </Card>
-
-          <Card height={80} marginTop={0} justifyCenter alignCenter>
-            <FontAwesome
-              name="warning"
-              size={40}
-              color={Theme.dark.primaryText}
-            />
-          </Card>
-
-          <Card height={80} marginTop={0} justifyCenter alignCenter>
-            <FontAwesome5
-              name="truck"
-              size={40}
-              color={Theme.dark.primaryText}
-            />
-          </Card>
-        </D.ContentDownloads>
-
-        <D.Content>
-          <D.Title>Indicações de Uso</D.Title>
-        </D.Content>
-
-        <View style={{ flexDirection: "row", gap: 15 }}>
-          <Card
-            paddingHorizontal={15}
-            paddingVertical={10}
-            gap={10}
-            flexDirection="column"
-            height={"auto"}
-          >
-            <View
-              style={{
-                width: "100%",
-                justifyContent: "space-between",
-                flexDirection: "row",
-                alignItems: "flex-start",
-              }}
-            >
-              <D.Title>Feijão</D.Title>
-
-              <View
-                style={{
-                  flexDirection: "row",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  gap: 5,
-                  backgroundColor: "#62ff5a5a",
-                  borderRadius: 50,
-                  paddingVertical: 5,
-                  paddingHorizontal: 10,
-                }}
+            <D.ContentDownloads>
+              <Card
+                height={80}
+                marginTop={0}
+                justify={"center"}
+                align={"center"}
               >
-                <Entypo name="leaf" size={16} color={Theme.dark.primaryText} />
-                <D.Subtitle $color={Theme.dark.primaryText}>Grãos</D.Subtitle>
-              </View>
+                <FontAwesome5
+                  name="file-pdf"
+                  size={40}
+                  color={Theme.dark.primaryText}
+                />
+              </Card>
+
+              <Card
+                height={80}
+                marginTop={0}
+                justify={"center"}
+                align={"center"}
+              >
+                <FontAwesome
+                  name="warning"
+                  size={40}
+                  color={Theme.dark.primaryText}
+                />
+              </Card>
+
+              <Card
+                height={80}
+                marginTop={0}
+                justify={"center"}
+                align={"center"}
+              >
+                <FontAwesome5
+                  name="truck"
+                  size={40}
+                  color={Theme.dark.primaryText}
+                />
+              </Card>
+            </D.ContentDownloads>
+          </D.Content>
+
+          <D.Content>
+            <D.Title>Composição</D.Title>
+
+            <View style={{ flex: 1 }}>
+              <Card
+                paddingHorizontal={15}
+                paddingVertical={10}
+                gap={10}
+                height={"auto"}
+              >
+                <View
+                  style={{
+                    flexDirection: "column",
+                    flex: 1,
+                    width: "70%",
+                  }}
+                >
+                  <D.Subtitle>Ingrediente Ativo</D.Subtitle>
+
+                  <View style={{ gap: 3, marginTop: 10 }}>
+                    <D.Title $fontSize={12}>
+                      Equivalente ácido de Glifosato
+                    </D.Title>
+
+                    <D.Title $fontSize={12}>Glifosato</D.Title>
+                  </View>
+                </View>
+
+                <View
+                  style={{
+                    flexDirection: "column",
+                    flexShrink: 1,
+                  }}
+                >
+                  <D.Subtitle>Concentração</D.Subtitle>
+
+                  <View style={{ gap: 3, marginTop: 10 }}>
+                    <D.Title $fontSize={12}>370 g/L</D.Title>
+
+                    <D.Title $fontSize={12}>445 g/L</D.Title>
+                  </View>
+                </View>
+              </Card>
             </View>
+          </D.Content>
 
-            <TouchableOpacity
-              activeOpacity={0.6}
-              style={{
-                flex: 1,
-                backgroundColor: Theme.dark.primary,
-                padding: 10,
-                borderRadius: 10,
-                gap: 10,
-                elevation: 10,
-              }}
-            >
-              <D.DiagnosticName
-                numberOfLines={1}
+          <D.Content>
+            <D.Title>Indicações de Uso</D.Title>
+
+            <View style={{ flexDirection: "row", gap: 15 }}>
+              <Card
+                paddingHorizontal={15}
+                paddingVertical={10}
+                gap={10}
+                flexDirection="column"
+                height={"auto"}
               >
-                Oryza sativa (Arroz vermelho) (Arroz vermelho) asd afd dsfsdfsdf
-                sdfsd
-              </D.DiagnosticName>
-
-              <View
-                style={{
-                  flexDirection: "row",
-                  gap: 15,
-                  flex: 1,
-                  flexShrink: 1,
-                }}
-              >
-                <View style={{ gap: 5 }}>
-                  <View
-                    style={{
-                      flexDirection: "row",
-                      gap: 5,
-                      alignItems: "center",
-                    }}
-                  >
-                    <D.Subtitle $color={Theme.dark.primaryText}>
-                      Dose:
-                    </D.Subtitle>
-
-                    <D.Subtitle style={{ marginTop: 1.3 }}>
-                      2 á 3 L p.c/ha
-                    </D.Subtitle>
-                  </View>
+                <View
+                  style={{
+                    width: "100%",
+                    justifyContent: "space-between",
+                    flexDirection: "row",
+                    alignItems: "center",
+                  }}
+                >
+                  <D.Title $color={'rgb(149 149 149)'}>Feijão</D.Title>
 
                   <View
                     style={{
                       flexDirection: "row",
-                      gap: 5,
                       alignItems: "center",
+                      justifyContent: "center",
+                      gap: 5,
+                      backgroundColor: "#62ff5a5a",
+                      borderRadius: 50,
+                      paddingVertical: 5,
+                      paddingHorizontal: 10,
                     }}
                   >
+                    <Entypo
+                      name="leaf"
+                      size={16}
+                      color={Theme.dark.primaryText}
+                    />
                     <D.Subtitle $color={Theme.dark.primaryText}>
-                      Calda Terrestre:
-                    </D.Subtitle>
-
-                    <D.Subtitle style={{ marginTop: 1.3 }}>
-                      120 L de calda/ha
-                    </D.Subtitle>
-                  </View>
-
-                  <View
-                    style={{
-                      flexDirection: "row",
-                      gap: 5,
-                      alignItems: "center",
-                    }}
-                  >
-                    <D.Subtitle $color={Theme.dark.primaryText}>
-                      Calda Aérea:
-                    </D.Subtitle>
-
-                    <D.Subtitle style={{ marginTop: 1.3 }}>
-                      20 á 40 L calda/ha (aéreo)
+                      Grãos
                     </D.Subtitle>
                   </View>
                 </View>
-              </View>
-            </TouchableOpacity>
-          </Card>
-        </View>
+
+                <TouchableOpacity
+                  activeOpacity={0.6}
+                  style={{
+                    flex: 1,
+                    backgroundColor: Theme.dark.primary,
+                    padding: 10,
+                    borderRadius: 10,
+                    gap: 10,
+                    elevation: 10,
+                  }}
+                >
+                  <D.DiagnosticName numberOfLines={1}>
+                    Oryza sativa (Arroz vermelho) (Arroz vermelho) asd afd
+                    dsfsdfsdf sdfsd
+                  </D.DiagnosticName>
+
+                  <View
+                    style={{
+                      flexDirection: "row",
+                      gap: 15,
+                      flex: 1,
+                      flexShrink: 1,
+                    }}
+                  >
+                    <View style={{ gap: 5 }}>
+                      <View
+                        style={{
+                          flexDirection: "row",
+                          gap: 5,
+                          alignItems: "center",
+                        }}
+                      >
+                        <D.Subtitle $color={Theme.dark.primaryText}>
+                          Dose:
+                        </D.Subtitle>
+
+                        <D.Subtitle style={{ marginTop: 1.3 }}>
+                          2 á 3 L p.c/ha
+                        </D.Subtitle>
+                      </View>
+
+                      <View
+                        style={{
+                          flexDirection: "row",
+                          gap: 5,
+                          alignItems: "center",
+                        }}
+                      >
+                        <D.Subtitle $color={Theme.dark.primaryText}>
+                          Calda Terrestre:
+                        </D.Subtitle>
+
+                        <D.Subtitle style={{ marginTop: 1.3 }}>
+                          120 L de calda/ha
+                        </D.Subtitle>
+                      </View>
+
+                      <View
+                        style={{
+                          flexDirection: "row",
+                          gap: 5,
+                          alignItems: "center",
+                        }}
+                      >
+                        <D.Subtitle $color={Theme.dark.primaryText}>
+                          Calda Aérea:
+                        </D.Subtitle>
+
+                        <D.Subtitle style={{ marginTop: 1.3 }}>
+                          20 á 40 L calda/ha (aéreo)
+                        </D.Subtitle>
+                      </View>
+                    </View>
+                  </View>
+                </TouchableOpacity>
+              </Card>
+            </View>
+          </D.Content>
+        </D.Container>
 
         {/* <FlatList
           data={pesticides}

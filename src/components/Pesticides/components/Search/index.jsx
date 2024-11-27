@@ -60,9 +60,9 @@ export function Search() {
     setViewableItems(viewableItems.map((item) => item.key));
   }).current;
 
-  const renderItem = ({ item }) => {
+  const renderItem = ({ item, key }) => {
     if (!viewableItems.includes(item?.id)) {
-      return <Skeleton style={{ marginVertical: 20 }} />;
+      return <Skeleton style={{ marginVertical: 20 }} key={key} />;
     }
 
     return <PesticideCard pesticide={item} />;
@@ -100,12 +100,12 @@ export function Search() {
         onEndReached={loadingMorePesticides}
         onEndReachedThreshold={1.5}
         scrollEventThrottle={16}
+        onViewableItemsChanged={onViewableItemsChanged}
         initialNumToRender={15}
         maxToRenderPerBatch={8}
         windowSize={15}
         showsVerticalScrollIndicator={false}
         removeClippedSubviews={true}
-        onViewableItemsChanged={onViewableItemsChanged}
         contentContainerStyle={{
           paddingHorizontal: 16,
           paddingTop: 28,

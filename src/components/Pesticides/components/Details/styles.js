@@ -21,14 +21,14 @@ export const GoBack = styled.TouchableOpacity`
 `
 
 export const Title = styled.Text`
-  color: ${Theme.dark.primaryText};
-  font-size: ${TextType.large + 'px'};
+  color: ${props => props.$color || Theme.dark.primaryText};
+  font-size: ${props => props.$fontSize ? props.$fontSize + 'px' : TextType.large + 'px'};
   font-weight: 500; 
 `
 
 export const Subtitle = styled.Text`
   color: ${props => props.$color || Theme.dark.secondaryText};
-  font-size: ${TextType.low + 'px'};
+  font-size: ${props => props.$fontSize ? props.$fontSize + 'px' : TextType.low + 'px'};
   font-weight: 500; 
 `
 
@@ -77,8 +77,14 @@ export const LastReview = styled.Text`
   margin-top: 5px;
 `
 
+export const Container = styled.View`
+  flex: 1;
+  gap: 30px;
+`
+
 export const Content = styled.View`
-  margin-top: 40px;
+  flex: 1;
+  margin-top: ${props => props.$marginTop + 'px' || 0};
 `
 
 export const ContentDownloads = styled.View`

@@ -7,8 +7,8 @@ export function Card({
   children,
   height = 130,
   flexDirection = "row",
-  justifyCenter = false,
-  alignCenter = false,
+  justify = 'center',
+  align = 'normal',
   marginTop = 10,
   paddingHorizontal = 10,
   paddingVertical = 10,
@@ -20,8 +20,8 @@ export function Card({
       $backgroundColor={Theme.dark.default}
       $height={height}
       $flexDirection={flexDirection}
-      $justifyCenter={justifyCenter}
-      $alignCenter={alignCenter}
+      $justify={justify}
+      $align={align}
       $marginTop={marginTop}
       $paddingHorizontal={paddingHorizontal}
       $paddingVertical={paddingVertical}

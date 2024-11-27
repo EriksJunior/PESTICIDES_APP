@@ -8,8 +8,8 @@ export const Card = styled.View`
   elevation: 10;
   height: ${props => props.$height + 'px'};
   flex-direction: ${props => props.$flexDirection};
-  justify-content: ${props => props.$justifyCenter && 'center'};
-  align-items: ${props => props.$alignCenter && 'center'};
+  justify-content: ${props => props.$justify};
+  align-items: ${props => props.$align};
   margin-top: ${props => props.$marginTop + 'px'};
 
   ${(props) => props.$paddingHorizontal && `
