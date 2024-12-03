@@ -22,7 +22,7 @@ export function Problems({ problem }) {
       }}
     >
       <View style={{ flexDirection: "row", gap: 5, alignItems: "center" }}>
-        <P.CommonName numberOfLines={1} $color={Theme.dark.darkGreen} $fo>
+        <P.CommonName numberOfLines={1} $color={Theme.dark.darkGreen}>
           {problem?.nome_comum}
         </P.CommonName>
 
@@ -83,7 +83,7 @@ export function Problems({ problem }) {
       </View> */}
 
       <View>
-        <SimpleLineIcons name="arrow-right" size={15} color="white" />
+        <SimpleLineIcons name="arrow-right" size={15} color='gray' />
       </View>
     </TouchableOpacity>
   );
