@@ -1,7 +1,7 @@
 import styled from "styled-components/native";
 
 import { Theme } from "../../../../styles/theme";
-import { TextType } from "../../../../styles/style";
+import { TextType } from "../../../../styles/types";
 
 export const Header = styled.View`
   flex-direction: row;
@@ -18,18 +18,6 @@ export const GoBack = styled.TouchableOpacity`
   height: 20px;
   justify-content: center;
   align-items: center;
-`
-
-export const Title = styled.Text`
-  color: ${props => props.$color || Theme.dark.primaryText};
-  font-size: ${props => props.$fontSize ? props.$fontSize + 'px' : TextType.large + 'px'};
-  font-weight: 500; 
-`
-
-export const Subtitle = styled.Text`
-  color: ${props => props.$color || Theme.dark.secondaryText};
-  font-size: ${props => props.$fontSize ? props.$fontSize + 'px' : TextType.low + 'px'};
-  font-weight: 500; 
 `
 
 export const ProviderImage = styled.View`
@@ -60,12 +48,6 @@ export const RegisterNumber = styled.Text`
 export const ProviderName = styled.Text`
   font-size: ${TextType.medium + 'px'};
   color: ${Theme.dark.secondaryText};
-  font-weight: 500;
-`
-
-export const DiagnosticName = styled.Text`
-  font-size: ${TextType.medium + 'px'};
-  color: ${Theme.dark.lightGreen};
   font-weight: 500;
 `
 

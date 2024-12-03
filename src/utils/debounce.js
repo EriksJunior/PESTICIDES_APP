@@ -1,4 +1,4 @@
-export const UseDebounce = (fn, delay = 300) => {
+export const UseDebounce = (fn, delay = 500) => {
   var timeoutId = null
 
   const debounceFn = (...params) => {

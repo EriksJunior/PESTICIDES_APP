@@ -1,13 +1,13 @@
 import { InputCustom } from "../../../UI/Inputs/InputText";
 import { PesticideCard } from "../Card";
-import { Skeleton } from "../../../UI/Skeleton";
+import { Skeleton } from "./components/Skeleton";
 
 import { useState, useEffect, useRef } from "react";
 import { View, Text, FlatList } from "react-native";
 import { ActivityIndicator } from "react-native";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 
-import { SearchPerticide } from "../../../../services/pesticide";
+import { SearchPerticide } from "../../../../services/PesticideService";
 
 import { Container, Header } from "./styles";
 import { Theme } from "../../../../styles/theme";

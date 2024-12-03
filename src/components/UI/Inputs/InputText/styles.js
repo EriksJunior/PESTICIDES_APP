@@ -1,7 +1,7 @@
 import styled from "styled-components/native";
 
 import { Theme } from "../../../../styles/theme"
-import { TextType } from "../../../../styles/style";
+import { TextType } from "../../../../styles/types";
 
 export const Content = styled.View`
   flex: 1;

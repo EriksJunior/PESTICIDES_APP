@@ -1,5 +1,3 @@
-import { View } from "react-native";
-
 import * as C from "./styles";
 import { Theme } from "../../../styles/theme";
 
