@@ -1,5 +1,6 @@
 import * as C from "./styles";
 import { Theme } from "../../../styles/theme";
+import { View, TouchableOpacity } from "react-native";
 
 export function Card({
   children,
@@ -14,9 +15,12 @@ export function Card({
   flexWrap = false,
   backgroundColor = Theme.dark.default,
   isShadow = true,
+  isTouchable = false,
 }) {
   return (
     <C.Card
+      activeOpacity={0.6}
+      as={isTouchable ? TouchableOpacity : View}
       $gap={gap}
       $backgroundColor={backgroundColor}
       $height={height}

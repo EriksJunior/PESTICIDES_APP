@@ -83,7 +83,7 @@ export function Problems({ problem }) {
       </View> */}
 
       <View>
-        <SimpleLineIcons name="arrow-right" size={15} color='gray' />
+        <SimpleLineIcons name="arrow-right" size={15} color="gray" />
       </View>
     </TouchableOpacity>
   );

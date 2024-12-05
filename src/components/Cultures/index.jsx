@@ -23,7 +23,6 @@ export function Cultures({ pesticideId }) {
     }
   };
 
-
   useEffect(() => {
     findCultureDetails();
   }, [pesticideId]);
@@ -49,7 +48,9 @@ export function Cultures({ pesticideId }) {
             scrollEnabled={false}
             data={cultures}
             keyExtractor={(cultures) => cultures.id}
-            renderItem={({ item, key }) => <Details culture={item} key={key}/>}
+            renderItem={({ item: { cultura }, key }) => (
+              <Details culture={cultura} key={key} />
+            )}
             ItemSeparatorComponent={() => (
               <View
                 style={{

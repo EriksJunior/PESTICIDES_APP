@@ -1,6 +1,9 @@
 import styled from "styled-components/native";
+import { View, TouchableOpacity } from 'react-native';
 
-export const Card = styled.View`
+export const Card = styled(({ as: DynamicCard = View, ...props }) => (
+  <DynamicCard {...props} />
+))`
   flex: 1;
   gap: ${props => props.$gap + 'px'};
   background-color: ${props => props.$backgroundColor};

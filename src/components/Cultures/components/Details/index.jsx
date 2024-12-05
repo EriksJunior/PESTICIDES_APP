@@ -1,5 +1,5 @@
-import { Entypo } from "@expo/vector-icons";
-import { View, FlatList } from "react-native";
+import { Entypo, SimpleLineIcons } from "@expo/vector-icons";
+import { View } from "react-native";
 
 import { Card } from "../../../UI/Card";
 import { Problems } from "../Problems";
@@ -16,17 +16,24 @@ export function Details({ culture }) {
       gap={10}
       flexDirection="column"
       height={"auto"}
+      isTouchable
     >
       <C.Header>
-        <Title $color={"rgb(149 149 149)"}>{culture?.nome}</Title>
+        <Title $color={"rgb(149 149 149)"} style={{flex: 1}} numberOfLines={1} >{culture?.nome}</Title>
 
-        <C.Leaf>
-          <Entypo name="leaf" size={16} color={Theme.dark.primaryText} />
-          <Subtitle $color={Theme.dark.primaryText}>Grãos</Subtitle>
-        </C.Leaf>
+        <View style={{flexDirection: 'row', alignItems: 'center', gap: 10}}>
+          <C.Leaf>
+            <Entypo name="leaf" size={16} color={Theme.dark.primaryText} />
+            <Subtitle $color={Theme.dark.primaryText}>Grãos</Subtitle>
+          </C.Leaf>
+
+          <View>
+            <SimpleLineIcons name="arrow-right" size={15} color="gray" />
+          </View>
+        </View>
       </C.Header>
 
-      <FlatList
+      {/* <FlatList
         // onEndReached={loadingMorePesticides}
         onEndReachedThreshold={1.5}
         scrollEventThrottle={16}
@@ -55,7 +62,7 @@ export function Details({ culture }) {
         //     style={{ marginVertical: 20 }}
         //   />
         // }
-      />
+      /> */}
     </Card>
   );
 }

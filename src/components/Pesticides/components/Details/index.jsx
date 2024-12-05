@@ -1,10 +1,6 @@
 import { useState, useEffect } from "react";
 import { router } from "expo-router";
-import {
-  SimpleLineIcons,
-  FontAwesome,
-  FontAwesome5
-} from "@expo/vector-icons";
+import { SimpleLineIcons, FontAwesome, FontAwesome5 } from "@expo/vector-icons";
 import { View, ScrollView } from "react-native";
 
 import * as D from "./styles";
@@ -64,9 +60,7 @@ export function Details({ pesticideId }) {
               <D.RegisterNumber>Nº {details.registro}</D.RegisterNumber>
 
               <View style={{ gap: 5 }}>
-                <Title $fontSize={TextType.medium}>
-                  {details?.nome_comum}
-                </Title>
+              <Title $fontSize={TextType.medium} $color={"#62ff5a5a"}>{details?.nome_comum}</Title>
                 <D.ProviderName numberOfLines={2}>
                   {details?.empresa?.razao_social}
                 </D.ProviderName>
@@ -79,7 +73,7 @@ export function Details({ pesticideId }) {
 
         <D.Container>
           <D.Content $marginTop={30}>
-            <Title>Downloads disponíveis</Title>
+            <Title $color={"#62ff5a5a"}>Downloads disponíveis</Title>
             <Subtitle>Realize downloads de BULA, FISQP e FET.</Subtitle>
 
             <D.ContentDownloads>
@@ -125,7 +119,7 @@ export function Details({ pesticideId }) {
           </D.Content>
 
           <D.Content>
-            <Title>Composição</Title>
+            <Title $color={"#62ff5a5a"}>Composição</Title>
 
             <View style={{ flex: 1 }}>
               <Card
@@ -172,7 +166,7 @@ export function Details({ pesticideId }) {
           </D.Content>
 
           <D.Content>
-            <Title>Classificação</Title>
+            <Title $color={"#62ff5a5a"}>Classificação</Title>
 
             <View style={{ flex: 1 }}>
               <Card
@@ -268,9 +262,9 @@ export function Details({ pesticideId }) {
           </D.Content>
 
           <D.Content>
-            <Title>Indicações de Uso</Title>
+            <Title $color={"#62ff5a5a"}>Indicações de Uso</Title>
 
-            <Cultures pesticideId={pesticideId}/>
+            <Cultures pesticideId={pesticideId} />
           </D.Content>
         </D.Container>
 

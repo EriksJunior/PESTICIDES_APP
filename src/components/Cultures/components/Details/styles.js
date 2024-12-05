@@ -6,6 +6,7 @@ export const Header = styled.View`
   justify-content: space-between;
   flex-direction: row;
   align-items: center;
+  gap: 10px;
 `
 
 export const Leaf = styled.View`
