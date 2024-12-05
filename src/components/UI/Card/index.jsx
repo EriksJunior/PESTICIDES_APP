@@ -16,9 +16,11 @@ export function Card({
   backgroundColor = Theme.dark.default,
   isShadow = true,
   isTouchable = false,
+  onPress
 }) {
   return (
     <C.Card
+      onPress={onPress && onPress}
       activeOpacity={0.6}
       as={isTouchable ? TouchableOpacity : View}
       $gap={gap}

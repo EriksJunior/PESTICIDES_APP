@@ -1,5 +1,7 @@
+import { useState } from "react";
+
 import { Entypo, SimpleLineIcons } from "@expo/vector-icons";
-import { View } from "react-native";
+import { View, ActivityIndicator } from "react-native";
 
 import { Card } from "../../../UI/Card";
 import { Problems } from "../Problems";
@@ -7,8 +9,18 @@ import { Problems } from "../Problems";
 import * as C from "./styles";
 import { Theme } from "../../../../styles/theme";
 import { Title, Subtitle } from "../../../../styles/global";
+import { FindProblemsByCultureId } from "../../../../services/ProblemsService";
 
 export function Details({ culture }) {
+  const [isLoading, setIsLoading] = useState(false);
+
+  const findProblems = async () => {
+    setIsLoading(true);
+    const result = await FindProblemsByCultureId(culture.id);
+    console.log(result);
+    setIsLoading(false);
+  };
+
   return (
     <Card
       paddingHorizontal={15}
@@ -17,18 +29,33 @@ export function Details({ culture }) {
       flexDirection="column"
       height={"auto"}
       isTouchable
+      onPress={findProblems}
     >
       <C.Header>
-        <Title $color={"rgb(149 149 149)"} style={{flex: 1}} numberOfLines={1} >{culture?.nome}</Title>
+        <Title
+          $color={"rgb(149 149 149)"}
+          style={{ flex: 1 }}
+          numberOfLines={1}
+        >
+          {culture?.nome}
+        </Title>
 
-        <View style={{flexDirection: 'row', alignItems: 'center', gap: 10}}>
+        <View style={{ flexDirection: "row", alignItems: "center", gap: 10 }}>
           <C.Leaf>
             <Entypo name="leaf" size={16} color={Theme.dark.primaryText} />
+
             <Subtitle $color={Theme.dark.primaryText}>Grãos</Subtitle>
           </C.Leaf>
 
-          <View>
-            <SimpleLineIcons name="arrow-right" size={15} color="gray" />
+          <View style={{width: 15}}>
+            {isLoading ? (
+              <ActivityIndicator
+                size="small"
+                color={Theme.dark.primaryText}
+              />
+            ) : (
+              <SimpleLineIcons name="arrow-right" size={15} color="gray" />
+            )}
           </View>
         </View>
       </C.Header>
