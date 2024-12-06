@@ -10,15 +10,20 @@ import * as C from "./styles";
 import { Theme } from "../../../../styles/theme";
 import { Title, Subtitle } from "../../../../styles/global";
 import { FindProblemsByCultureId } from "../../../../services/ProblemsService";
+import { Accordion } from "../../../UI/Accordion";
 
-export function Details({ culture }) {
+export function Details({ pesticideId, culture }) {
   const [isLoading, setIsLoading] = useState(false);
+  const [problems, setProblems] = useState([]);
 
   const findProblems = async () => {
     setIsLoading(true);
-    const result = await FindProblemsByCultureId(culture.id);
-    console.log(result);
+
+    const result = await FindProblemsByCultureId(pesticideId, culture.id);
+    setProblems(result);
     setIsLoading(false);
+
+    console.log(result)
   };
 
   return (
@@ -29,7 +34,7 @@ export function Details({ culture }) {
       flexDirection="column"
       height={"auto"}
       isTouchable
-      onPress={findProblems}
+      onPress={() => findProblems()}
     >
       <C.Header>
         <Title
@@ -47,18 +52,17 @@ export function Details({ culture }) {
             <Subtitle $color={Theme.dark.primaryText}>Grãos</Subtitle>
           </C.Leaf>
 
-          <View style={{width: 15}}>
+          <View style={{ width: 15 }}>
             {isLoading ? (
-              <ActivityIndicator
-                size="small"
-                color={Theme.dark.primaryText}
-              />
+              <ActivityIndicator size="small" color={Theme.dark.primaryText} />
             ) : (
               <SimpleLineIcons name="arrow-right" size={15} color="gray" />
             )}
           </View>
         </View>
       </C.Header>
+
+      {/* <Accordion items={problems} onPress={findProblems}/> */}
 
       {/* <FlatList
         // onEndReached={loadingMorePesticides}

@@ -49,7 +49,7 @@ export function Cultures({ pesticideId }) {
             data={cultures}
             keyExtractor={(cultures) => cultures.id}
             renderItem={({ item: { cultura }, key }) => (
-              <Details culture={cultura} key={key} />
+              <Details pesticideId={pesticideId} culture={cultura} key={key} />
             )}
             ItemSeparatorComponent={() => (
               <View
