@@ -4,11 +4,23 @@ import { Subtitle } from "../../../../styles/global";
 import * as P from "./styles";
 import { Theme } from "../../../../styles/theme";
 import { SimpleLineIcons } from "@expo/vector-icons";
+import { FindProblemsDetails } from "../../../../services/ProblemsService";
 
-export function Problems({ problem }) {
+export function Problems({ problem, pesticideId, cultureId }) {
+  const findProblemsDetails = async () => {
+    const problemsDetails = await FindProblemsDetails(
+      cultureId,
+      pesticideId,
+      problem.id
+    );
+
+    console.log(problemsDetails)
+  };
+
   return (
     <TouchableOpacity
       activeOpacity={0.6}
+      onPress={findProblemsDetails}
       style={{
         flex: 1,
         flexDirection: "row",
@@ -30,10 +42,7 @@ export function Problems({ problem }) {
           marginRight: 10,
         }}
       >
-        <P.CommonName
-          numberOfLines={1}
-          $color={Theme.dark.darkGreen}
-        >
+        <P.CommonName numberOfLines={1} $color={Theme.dark.darkGreen}>
           {problem?.nome_comum}
         </P.CommonName>
 

@@ -81,7 +81,12 @@ export function Details({ pesticideId, culture, isOpen = false, onPress }) {
             data={problems}
             keyExtractor={(problem) => problem.id}
             renderItem={({ item, key }) => (
-              <Problems problem={item} key={key} />
+              <Problems
+                problem={item}
+                key={key}
+                pesticideId={pesticideId}
+                cultureId={culture.id}
+              />
             )}
             ItemSeparatorComponent={() => (
               <View
