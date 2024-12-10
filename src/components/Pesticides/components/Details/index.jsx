@@ -12,6 +12,7 @@ import { Theme } from "../../../../styles/theme";
 import { TextType } from "../../../../styles/types";
 
 import { FindPerticideDetails } from "../../../../services/PesticideService";
+import { BottomSheet } from "../../../UI/BottomSheet";
 
 export function Details({ pesticideId }) {
   const [details, setDetails] = useState({});
@@ -60,7 +61,9 @@ export function Details({ pesticideId }) {
               <D.RegisterNumber>Nº {details.registro}</D.RegisterNumber>
 
               <View style={{ gap: 5 }}>
-              <Title $fontSize={TextType.medium} $color={"#62ff5a5a"}>{details?.nome_comum}</Title>
+                <Title $fontSize={TextType.medium} $color={"#62ff5a5a"}>
+                  {details?.nome_comum}
+                </Title>
                 <D.ProviderName numberOfLines={2}>
                   {details?.empresa?.razao_social}
                 </D.ProviderName>
@@ -267,23 +270,9 @@ export function Details({ pesticideId }) {
             <Cultures pesticideId={pesticideId} />
           </D.Content>
         </D.Container>
-
-        {/* <FlatList
-          data={pesticides}
-          keyExtractor={(pesticide) => pesticide.value}
-          renderItem={({ item }) => <PerticideCard pesticide={item} />}r
-          ItemSeparatorComponent={() => (
-            <View
-              style={{
-                flex: 1,
-                height: 5,
-              }}
-            ></View>
-          )}
-          scrollEnabled={false}
-          showsVerticalScrollIndicator={false}
-        /> */}
       </ScrollView>
+
+      {/* <BottomSheet onClose={() => {}} /> */}
     </>
   );
 }

@@ -4,7 +4,6 @@ import { Stack } from "expo-router";
 import * as NavigationBar from 'expo-navigation-bar';
 import { useEffect } from "react";
 
-
 export default function RootLayout() { 
   useEffect(() => {
     NavigationBar.setBackgroundColorAsync(Theme.dark.primary);
