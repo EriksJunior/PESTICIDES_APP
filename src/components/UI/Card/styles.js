@@ -10,6 +10,7 @@ export const Card = styled(({ as: DynamicCard = View, ...props }) => (
   border-radius: 15px;
 
   height: ${props => props.$height + 'px'};
+  min-height: ${props => props.$minHeight + 'px'};
   flex-direction: ${props => props.$flexDirection};
   justify-content: ${props => props.$justify};
   align-items: ${props => props.$align};

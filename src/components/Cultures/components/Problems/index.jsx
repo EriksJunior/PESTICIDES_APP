@@ -19,16 +19,34 @@ export function Problems({ problem }) {
         borderRadius: 10,
         gap: 10,
         elevation: 10,
+        width: "100%",
       }}
     >
-      <View style={{ flexDirection: "row", gap: 5, alignItems: "center" }}>
-        <P.CommonName numberOfLines={1} $color={Theme.dark.darkGreen}>
+      <View
+        style={{
+          flexDirection: "row",
+          alignItems: "center",
+          flex: 1,
+          marginRight: 10,
+        }}
+      >
+        <P.CommonName
+          numberOfLines={1}
+          $color={Theme.dark.darkGreen}
+        >
           {problem?.nome_comum}
         </P.CommonName>
 
-        <P.ScientificName numberOfLines={1}>
+        <P.ScientificName
+          numberOfLines={1}
+          style={{ flexShrink: 1, marginLeft: 5 }}
+        >
           ({problem?.nome_cientifico})
         </P.ScientificName>
+      </View>
+
+      <View>
+        <SimpleLineIcons name="arrow-right" size={15} color="gray" />
       </View>
 
       {/* <View
@@ -81,10 +99,6 @@ export function Problems({ problem }) {
           </View>
         </View>
       </View> */}
-
-      <View>
-        <SimpleLineIcons name="arrow-right" size={15} color="gray" />
-      </View>
     </TouchableOpacity>
   );
 }

@@ -5,6 +5,7 @@ import { View, TouchableOpacity } from "react-native";
 export function Card({
   children,
   height = 130,
+  minHeight,
   flexDirection = "row",
   justify = "center",
   align = "normal",
@@ -16,7 +17,7 @@ export function Card({
   backgroundColor = Theme.dark.default,
   isShadow = true,
   isTouchable = false,
-  onPress
+  onPress,
 }) {
   return (
     <C.Card
@@ -26,6 +27,7 @@ export function Card({
       $gap={gap}
       $backgroundColor={backgroundColor}
       $height={height}
+      $minHeight={minHeight}
       $flexDirection={flexDirection}
       $justify={justify}
       $align={align}

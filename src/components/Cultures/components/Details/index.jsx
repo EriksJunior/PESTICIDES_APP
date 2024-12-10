@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import { Entypo, SimpleLineIcons } from "@expo/vector-icons";
-import { View, ActivityIndicator } from "react-native";
+import { View, ActivityIndicator, FlatList } from "react-native";
 
 import { Card } from "../../../UI/Card";
 import { Problems } from "../Problems";
@@ -10,20 +10,18 @@ import * as C from "./styles";
 import { Theme } from "../../../../styles/theme";
 import { Title, Subtitle } from "../../../../styles/global";
 import { FindProblemsByCultureId } from "../../../../services/ProblemsService";
-import { Accordion } from "../../../UI/Accordion";
 
-export function Details({ pesticideId, culture }) {
+export function Details({ pesticideId, culture, isOpen = false, onPress }) {
   const [isLoading, setIsLoading] = useState(false);
   const [problems, setProblems] = useState([]);
 
   const findProblems = async () => {
     setIsLoading(true);
 
-    const result = await FindProblemsByCultureId(pesticideId, culture.id);
+    const result = await FindProblemsByCultureId(culture.id, pesticideId);
     setProblems(result);
-    setIsLoading(false);
 
-    console.log(result)
+    setIsLoading(false);
   };
 
   return (
@@ -33,8 +31,11 @@ export function Details({ pesticideId, culture }) {
       gap={10}
       flexDirection="column"
       height={"auto"}
+      minHeight={50}
       isTouchable
-      onPress={() => findProblems()}
+      onPress={() => {
+        onPress(), findProblems();
+      }}
     >
       <C.Header>
         <Title
@@ -55,45 +56,53 @@ export function Details({ pesticideId, culture }) {
           <View style={{ width: 15 }}>
             {isLoading ? (
               <ActivityIndicator size="small" color={Theme.dark.primaryText} />
-            ) : (
+            ) : !isOpen ? (
               <SimpleLineIcons name="arrow-right" size={15} color="gray" />
+            ) : (
+              <SimpleLineIcons name="arrow-down" size={15} color="gray" />
             )}
           </View>
         </View>
       </C.Header>
 
-      {/* <Accordion items={problems} onPress={findProblems}/> */}
-
-      {/* <FlatList
-        // onEndReached={loadingMorePesticides}
-        onEndReachedThreshold={1.5}
-        scrollEventThrottle={16}
-        // onViewableItemsChanged={onViewableItemsChanged}
-        initialNumToRender={15}
-        maxToRenderPerBatch={8}
-        windowSize={15}
-        showsVerticalScrollIndicator={false}
-        removeClippedSubviews={true}
-        scrollEnabled={false}
-        data={culture.problemas}
-        keyExtractor={(problem) => problem.id}
-        renderItem={({ item, key }) => <Problems problem={item} key={key} />}
-        ItemSeparatorComponent={() => (
-          <View
-            style={{
-              flex: 1,
-              height: 5,
-            }}
-          ></View>
-        )}
-        // ListFooterComponent={
-        //   <ActivityIndicator
-        //     size="large"
-        //     color={Theme.dark.lightGreen}
-        //     style={{ marginVertical: 20 }}
-        //   />
-        // }
-      /> */}
+      {isOpen && !isLoading ? (
+        <>
+          <FlatList
+            // onEndReached={loadingMorePesticides}
+            onEndReachedThreshold={1.5}
+            scrollEventThrottle={16}
+            // onViewableItemsChanged={onViewableItemsChanged}
+            initialNumToRender={15}
+            maxToRenderPerBatch={8}
+            windowSize={15}
+            showsVerticalScrollIndicator={false}
+            removeClippedSubviews={true}
+            scrollEnabled={false}
+            data={problems}
+            keyExtractor={(problem) => problem.id}
+            renderItem={({ item, key }) => (
+              <Problems problem={item} key={key} />
+            )}
+            ItemSeparatorComponent={() => (
+              <View
+                style={{
+                  flex: 1,
+                  height: 5,
+                }}
+              ></View>
+            )}
+            // ListFooterComponent={
+            //   <ActivityIndicator
+            //     size="large"
+            //     color={Theme.dark.lightGreen}
+            //     style={{ marginVertical: 20 }}
+            //   />
+            // }
+          />
+        </>
+      ) : (
+        <></>
+      )}
     </Card>
   );
 }

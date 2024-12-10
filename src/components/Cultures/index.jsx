@@ -4,11 +4,13 @@ import { View, FlatList, Text } from "react-native";
 import { Skeleton } from "./components/Skeleton";
 
 import { FindCultureDetails } from "../../services/CultureService";
+
 import { Details } from "./components/Details";
 
 export function Cultures({ pesticideId }) {
   const [isLoading, setIsLoading] = useState(false);
   const [cultures, setCultures] = useState([]);
+  const [activeIdx, setActiveIdx] = useState(-1);
 
   const findCultureDetails = async () => {
     try {
@@ -34,7 +36,7 @@ export function Cultures({ pesticideId }) {
           <Skeleton style={{ marginVertical: 20 }} />
         </View>
       ) : (
-        <>
+        <View style={{flex: 1, height: '100%', width: '100%'}}>
           <FlatList
             // onEndReached={loadingMorePesticides}
             onEndReachedThreshold={1.5}
@@ -48,8 +50,14 @@ export function Cultures({ pesticideId }) {
             scrollEnabled={false}
             data={cultures}
             keyExtractor={(cultures) => cultures.id}
-            renderItem={({ item: { cultura }, key }) => (
-              <Details pesticideId={pesticideId} culture={cultura} key={key} />
+            renderItem={({ item: { cultura }, index }) => (
+              <Details
+                pesticideId={pesticideId}
+                culture={cultura}
+                key={cultura.id}
+                onPress={() => setActiveIdx(activeIdx === index ? -1 : index)}
+                isOpen={activeIdx === index}
+              />
             )}
             ItemSeparatorComponent={() => (
               <View
@@ -59,15 +67,9 @@ export function Cultures({ pesticideId }) {
                 }}
               ></View>
             )}
-            // ListFooterComponent={
-            //   <ActivityIndicator
-            //     size="large"
-            //     color={Theme.dark.lightGreen}
-            //     style={{ marginVertical: 20 }}
-            //   />
-            // }
+         
           />
-        </>
+        </View>
       )}
     </View>
   );

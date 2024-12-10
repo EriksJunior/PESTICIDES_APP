@@ -37,6 +37,7 @@ export function AccordionItem({ item, isOpen, onPress }) {
     }
 
     return { height };
+
   }, [isOpen, containerHeight, contentHeight]);
 
   return (
@@ -60,7 +61,7 @@ export function AccordionItem({ item, isOpen, onPress }) {
         onLayout={layoutContent}
       >
         <Text style={{ color: "red" }}>
-          sdlkjfh jsjjhklfdsjkhhjk hjkfshjkdhfj hksdhkj
+        
         </Text>
       </View>
     </AnimatedContainer>
