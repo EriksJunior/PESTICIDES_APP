@@ -1,21 +1,24 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { View, ScrollView } from "react-native";
 import { router } from "expo-router";
 import { SimpleLineIcons, FontAwesome, FontAwesome5 } from "@expo/vector-icons";
-import { View, ScrollView } from "react-native";
+
+import { PesticideDetailsContext } from "../../../../context/PesticideDetails";
 
 import * as D from "./styles";
 import { Card } from "../../../UI/Card";
 import { Cultures } from "../../../Cultures";
+import { BottomSheet } from "../../../UI/BottomSheet";
 
 import { Title, Subtitle } from "../../../../styles/global";
 import { Theme } from "../../../../styles/theme";
 import { TextType } from "../../../../styles/types";
 
 import { FindPerticideDetails } from "../../../../services/PesticideService";
-import { BottomSheet } from "../../../UI/BottomSheet";
 
 export function Details({ pesticideId }) {
   const [details, setDetails] = useState({});
+  const {problemIsOpen, toggle} = useContext(PesticideDetailsContext);
 
   const findPerticideDetails = async () => {
     const pesticeDetails = await FindPerticideDetails(pesticideId);
@@ -42,7 +45,7 @@ export function Details({ pesticideId }) {
           <SimpleLineIcons name="arrow-left" size={15} color="white" />
         </D.GoBack>
 
-        <Title>Detalhes</Title>
+        <Title onPress={toggle}>Detalhes</Title>
       </D.Header>
 
       <ScrollView
@@ -272,7 +275,7 @@ export function Details({ pesticideId }) {
         </D.Container>
       </ScrollView>
 
-      {/* <BottomSheet onClose={() => {}} /> */}
+      {problemIsOpen && <BottomSheet onClose={toggle} />}
     </>
   );
 }

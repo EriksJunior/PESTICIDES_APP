@@ -1,12 +1,18 @@
+import { useContext } from "react";
 import { TouchableOpacity, View, Text } from "react-native";
-import { Subtitle } from "../../../../styles/global";
+import { SimpleLineIcons } from "@expo/vector-icons";
+
+import { PesticideDetailsContext } from "../../../../context/PesticideDetails";
 
 import * as P from "./styles";
+import { Subtitle } from "../../../../styles/global";
 import { Theme } from "../../../../styles/theme";
-import { SimpleLineIcons } from "@expo/vector-icons";
+
 import { FindProblemsDetails } from "../../../../services/ProblemsService";
 
 export function Problems({ problem, pesticideId, cultureId }) {
+  const { toggle } = useContext(PesticideDetailsContext);
+
   const findProblemsDetails = async () => {
     const problemsDetails = await FindProblemsDetails(
       cultureId,
@@ -14,7 +20,8 @@ export function Problems({ problem, pesticideId, cultureId }) {
       problem.id
     );
 
-    console.log(problemsDetails)
+    console.log(problemsDetails);
+    toggle();
   };
 
   return (

@@ -4,6 +4,7 @@ import { View } from "react-native";
 
 import { Theme } from "../../../styles/theme";
 import { Details } from "../../../components/Pesticides/components/Details";
+import { PesticideDetailsProvider } from "../../../context/PesticideDetails";
 
 export default function Index() {
   const statusBarHeight = Constants.statusBarHeight;
@@ -17,7 +18,11 @@ export default function Index() {
         paddingTop: statusBarHeight,
       }}
     >
-      {id && <Details pesticideId={id} />}
+      {id && (
+        <PesticideDetailsProvider>
+          <Details pesticideId={id} />
+        </PesticideDetailsProvider>
+      )}
     </View>
   );
 }

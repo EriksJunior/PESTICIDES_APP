@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import { View, FlatList, Text } from "react-native";
+import { View, FlatList } from "react-native";
 
+import { Details } from "./components/Details";
 import { Skeleton } from "./components/Skeleton";
 
 import { FindCultureDetails } from "../../services/CultureService";
 
-import { Details } from "./components/Details";
 
 export function Cultures({ pesticideId }) {
   const [isLoading, setIsLoading] = useState(false);
@@ -36,7 +36,7 @@ export function Cultures({ pesticideId }) {
           <Skeleton style={{ marginVertical: 20 }} />
         </View>
       ) : (
-        <View style={{flex: 1, height: '100%', width: '100%'}}>
+        <View style={{ flex: 1, height: "100%", width: "100%" }}>
           <FlatList
             // onEndReached={loadingMorePesticides}
             onEndReachedThreshold={1.5}
@@ -67,7 +67,6 @@ export function Cultures({ pesticideId }) {
                 }}
               ></View>
             )}
-         
           />
         </View>
       )}
