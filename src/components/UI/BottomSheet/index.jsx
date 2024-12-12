@@ -13,7 +13,7 @@ import {
   runOnJS,
   useAnimatedStyle,
   SlideInDown,
-  SlideOutDown
+  SlideOutDown,
 } from "react-native-reanimated";
 
 import { AnimatedContainer, Container } from "./styles";
@@ -54,23 +54,18 @@ export function BottomSheet({ children, onClose }) {
     <Container>
       <GestureHandlerRootView style={{ flex: 1 }}>
         <GestureDetector gesture={pan}>
-          <AnimatedContainer style={[translateY]} entering={SlideInDown.springify().damping(15)} exiting={SlideOutDown}>
+          <AnimatedContainer
+            style={[translateY]}
+            entering={SlideInDown.springify().damping(15)}
+            exiting={SlideOutDown}
+          >
             <MaterialCommunityIcons
               name="drag-horizontal-variant"
               color="#62ff5a5a"
               size={24}
               style={{ marginTop: 10, alignSelf: "center" }}
             />
-            <Text
-              style={{
-                color: "#FFF",
-                fontSize: 18,
-                fontWeight: "bold",
-                margin: 24,
-              }}
-            >
-              OPAAA
-            </Text>
+            {children}
           </AnimatedContainer>
         </GestureDetector>
       </GestureHandlerRootView>
