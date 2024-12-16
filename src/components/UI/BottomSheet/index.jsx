@@ -1,4 +1,4 @@
-import { Dimensions, Text, TouchableOpacity, View } from "react-native";
+import { Dimensions, View } from "react-native";
 import {
   GestureHandlerRootView,
   GestureDetector,
@@ -18,7 +18,7 @@ import {
 
 import { AnimatedContainer, Container } from "./styles";
 
-export function BottomSheet({ children, onClose }) {
+export function BottomSheet({ children, onClose, isOpen = false }) {
   const offSet = useSharedValue(0);
   const DIMENSIONS = Dimensions.get("window");
   const SHEET_HEIGHT = DIMENSIONS.height - 100;
@@ -30,6 +30,7 @@ export function BottomSheet({ children, onClose }) {
   };
 
   const pan = Gesture.Pan()
+    .enabled(isOpen)
     .onChange((e) => {
       const offSetVertial = e.changeY + offSet.value;
       const clamp = Math.max(-20, offSetVertial);
@@ -51,24 +52,35 @@ export function BottomSheet({ children, onClose }) {
   }));
 
   return (
-    <Container>
-      <GestureHandlerRootView style={{ flex: 1 }}>
-        <GestureDetector gesture={pan}>
+    isOpen && (
+      <Container>
+        <GestureHandlerRootView style={{ flex: 1 }}>
           <AnimatedContainer
             style={[translateY]}
             entering={SlideInDown.springify().damping(15)}
             exiting={SlideOutDown}
           >
-            <MaterialCommunityIcons
-              name="drag-horizontal-variant"
-              color="#62ff5a5a"
-              size={24}
-              style={{ marginTop: 10, alignSelf: "center" }}
-            />
+            <GestureDetector gesture={pan}>
+              <View
+                style={{
+                  width: "100%",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  height: 35,
+                }}
+              >
+                <MaterialCommunityIcons
+                  name="drag-horizontal-variant"
+                  color="#62ff5a5a"
+                  size={24}
+                />
+              </View>
+            </GestureDetector>
+
             {children}
           </AnimatedContainer>
-        </GestureDetector>
-      </GestureHandlerRootView>
-    </Container>
+        </GestureHandlerRootView>
+      </Container>
+    )
   );
 }

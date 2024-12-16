@@ -13,6 +13,7 @@ export const Container = styled.View`
   right: 0;
   bottom: 0;
   z-index: 1;
+  background-color: #00000069;
 `
 
 const Content = styled.View`
@@ -21,6 +22,9 @@ const Content = styled.View`
   background-color: ${Theme.dark.default};
   position: absolute;
   bottom: -80px;
+  border-top: 1px;
+  border-top-width: 1px;
+  border-top-color: ${Theme.dark.primary}
 `
 
 export const AnimatedContainer = Animated.createAnimatedComponent(Content);

@@ -4,7 +4,7 @@ import { View, ActivityIndicator, FlatList } from "react-native";
 import { Entypo, SimpleLineIcons } from "@expo/vector-icons";
 
 import { Card } from "../../../UI/Card";
-import { Problems } from "../Problems";
+import {Problems} from "../../../Problems";
 
 import * as C from "./styles";
 import { Theme } from "../../../../styles/theme";

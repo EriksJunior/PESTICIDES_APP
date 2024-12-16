@@ -46,7 +46,7 @@ export function Details({ pesticideId }) {
           <SimpleLineIcons name="arrow-left" size={15} color="white" />
         </D.GoBack>
 
-        <Title onPress={toggle}>Detalhes</Title>
+        <Title>Detalhes</Title>
       </D.Header>
 
       <ScrollView
@@ -276,11 +276,9 @@ export function Details({ pesticideId }) {
         </D.Container>
       </ScrollView>
 
-      {problemIsOpen && (
-        <BottomSheet onClose={toggle}>
-          <ProblemsDetails />
-        </BottomSheet>
-      )}
+      {/* <BottomSheet onClose={toggle} isOpen={problemIsOpen}>
+        <ProblemsDetails />
+      </BottomSheet> */}
     </>
   );
 }

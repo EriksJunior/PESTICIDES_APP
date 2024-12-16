@@ -2,7 +2,6 @@ export const Theme = {
   light: {},
   dark: {
     primary: '#141414',
-    secondary: '#187b1363',
     default: '#202020',
     darkGreen: '#187b1363',
     lightGreen: '#187b13',
