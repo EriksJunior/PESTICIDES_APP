@@ -1,6 +1,6 @@
 import styled from "styled-components/native";
-import { TextType } from "../../../../styles/types";
-import { Theme } from "../../../../styles/theme";
+import { TextType } from "../../styles/types";
+import { Theme } from "../../styles/theme";
 
 
 export const ScientificName = styled.Text`

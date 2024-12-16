@@ -15,10 +15,11 @@ import { Theme } from "../../../../styles/theme";
 import { TextType } from "../../../../styles/types";
 
 import { FindPerticideDetails } from "../../../../services/PesticideService";
+import { ProblemsDetails } from "../../../Problems/components/Details";
 
 export function Details({ pesticideId }) {
   const [details, setDetails] = useState({});
-  const {problemIsOpen, toggle} = useContext(PesticideDetailsContext);
+  const { problemIsOpen, toggle } = useContext(PesticideDetailsContext);
 
   const findPerticideDetails = async () => {
     const pesticeDetails = await FindPerticideDetails(pesticideId);
@@ -275,7 +276,11 @@ export function Details({ pesticideId }) {
         </D.Container>
       </ScrollView>
 
-      {problemIsOpen && <BottomSheet onClose={toggle} />}
+      {problemIsOpen && (
+        <BottomSheet onClose={toggle}>
+          <ProblemsDetails />
+        </BottomSheet>
+      )}
     </>
   );
 }
