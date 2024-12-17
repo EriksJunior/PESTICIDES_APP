@@ -103,6 +103,125 @@ export function ProblemsDetails() {
         </Subtitle>
       </View>
 
+      <View style={{ marginBottom: 10 }}>
+        <Subtitle $color={"gray"}>
+          Angiquinho (Aeschynomene denticulata)
+        </Subtitle>
+      </View>
+
+      <View style={{ marginBottom: 10 }}>
+        <Subtitle $color={"gray"}>
+          Angiquinho (Aeschynomene denticulata)
+        </Subtitle>
+      </View>
+
+      <View style={{ marginBottom: 10 }}>
+        <Subtitle $color={"gray"}>
+          Angiquinho (Aeschynomene denticulata)
+        </Subtitle>
+      </View>
+
+      <View style={{ marginBottom: 10 }}>
+        <Subtitle $color={"gray"}>
+          Angiquinho (Aeschynomene denticulata)
+        </Subtitle>
+      </View>
+
+      <View style={{ marginBottom: 10 }}>
+        <Subtitle $color={"gray"}>
+          Angiquinho (Aeschynomene denticulata)
+        </Subtitle>
+      </View>
+
+      <View style={{ marginBottom: 10 }}>
+        <Subtitle $color={"gray"}>
+          Angiquinho (Aeschynomene denticulata)
+        </Subtitle>
+      </View>
+
+      <View style={{ marginBottom: 10 }}>
+        <Subtitle $color={"gray"}>
+          Angiquinho (Aeschynomene denticulata)
+        </Subtitle>
+      </View>
+
+      <View style={{ marginBottom: 10 }}>
+        <Subtitle $color={"gray"}>
+          Angiquinho (Aeschynomene denticulata)
+        </Subtitle>
+      </View>
+
+      <View style={{ marginBottom: 10 }}>
+        <Subtitle $color={"gray"}>
+          Angiquinho (Aeschynomene denticulata)
+        </Subtitle>
+      </View>
+            <View style={{ marginBottom: 10 }}>
+        <Subtitle $color={"gray"}>
+          Angiquinho (Aeschynomene denticulata)
+        </Subtitle>
+      </View>
+
+      <View style={{ marginBottom: 10 }}>
+        <Subtitle $color={"gray"}>
+          Angiquinho (Aeschynomene denticulata)
+        </Subtitle>
+      </View>
+
+      <View style={{ marginBottom: 10 }}>
+        <Subtitle $color={"gray"}>
+          Angiquinho (Aeschynomene denticulata)
+        </Subtitle>
+      </View>
+
+      <View style={{ marginBottom: 10 }}>
+        <Subtitle $color={"gray"}>
+          Angiquinho (Aeschynomene denticulata)
+        </Subtitle>
+      </View>
+
+      <View style={{ marginBottom: 10 }}>
+        <Subtitle $color={"gray"}>
+          Angiquinho (Aeschynomene denticulata)
+        </Subtitle>
+      </View>
+
+      <View style={{ marginBottom: 10 }}>
+        <Subtitle $color={"gray"}>
+          Angiquinho (Aeschynomene denticulata)
+        </Subtitle>
+      </View>
+
+      <View style={{ marginBottom: 10 }}>
+        <Subtitle $color={"gray"}>
+          Angiquinho (Aeschynomene denticulata)
+        </Subtitle>
+      </View>
+
+      <View style={{ marginBottom: 10 }}>
+        <Subtitle $color={"gray"}>
+          Angiquinho (Aeschynomene denticulata)
+        </Subtitle>
+      </View>
+
+      <View style={{ marginBottom: 10 }}>
+        <Subtitle $color={"gray"}>
+          Angiquinho (Aeschynomene denticulata)
+        </Subtitle>
+      </View>
+
+      <View style={{ marginBottom: 10 }}>
+        <Subtitle $color={"gray"}>
+          Angiquinho (Aeschynomene denticulata)
+        </Subtitle>
+      </View>
+
+      <View style={{ marginBottom: 10 }}>
+        <Subtitle $color={"gray"}>
+          Angiquinho (Aeschynomene denticulata)
+        </Subtitle>
+      </View>
+
       <View style={{ gap: 5 }}>
         <View
           style={{

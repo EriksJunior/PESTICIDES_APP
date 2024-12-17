@@ -16,6 +16,10 @@ export default function RootLayout() {
         name="(perticide)"
         options={{ animation: "ios", headerShown: false }}
       />
+       <Stack.Screen
+        name="problems/index"
+        options={{ animation: "ios", headerShown: false }}
+      />
       <Stack.Screen
         name="+not-found"
         options={{ animation: "ios", headerShown: false }}

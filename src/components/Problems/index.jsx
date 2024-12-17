@@ -8,6 +8,7 @@ import * as P from "./styles";
 import { Theme } from "../../styles/theme";
 
 import { FindProblemsDetails } from "../../services/ProblemsService";
+import { router } from "expo-router";
 
 export function Problems({ problem, pesticideId, cultureId }) {
   const { toggle } = useContext(PesticideDetailsContext);
@@ -26,7 +27,7 @@ export function Problems({ problem, pesticideId, cultureId }) {
   return (
     <TouchableOpacity
       activeOpacity={0.6}
-      onPress={findProblemsDetails}
+      onPress={() => router.push(`/problems`)}
       style={{
         flex: 1,
         flexDirection: "row",
