@@ -29,6 +29,7 @@ export const HeaderImage = styled.View`
   flex-direction: row;
   justify-content: space-between;
   color: ${Theme.dark.primaryText};
+  z-index: 200;
 `
 
 export const FooterImage = styled.View`

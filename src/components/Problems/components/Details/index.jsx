@@ -18,7 +18,7 @@ export function ProblemsDetails() {
         }}
       >
         <D.HeaderImage>
-          <D.ActionItem activeOpacity={0.6}>
+          <D.ActionItem activeOpacity={0.6} onPress={() => console.log('voltar')}>
             <SimpleLineIcons name="arrow-left-circle" size={20} color="white" />
           </D.ActionItem>
 
