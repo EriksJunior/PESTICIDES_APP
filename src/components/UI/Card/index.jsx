@@ -9,6 +9,7 @@ export function Card({
   flexDirection = "row",
   justify = "center",
   align = "normal",
+  radius = 15,
   marginTop = 10,
   paddingHorizontal = 10,
   paddingVertical = 10,
@@ -27,6 +28,7 @@ export function Card({
       $gap={gap}
       $backgroundColor={backgroundColor}
       $height={height}
+      $radius={radius}
       $minHeight={minHeight}
       $flexDirection={flexDirection}
       $justify={justify}

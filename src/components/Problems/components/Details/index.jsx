@@ -1,266 +1,140 @@
-import { ImageBackground, View } from "react-native";
+import { ImageBackground, View, TouchableOpacity } from "react-native";
+import { SimpleLineIcons } from "@expo/vector-icons";
+
+import * as D from "./styles";
 import { Subtitle, Title } from "../../../../styles/global";
 import { Theme } from "../../../../styles/theme";
 import { TextType } from "../../../../styles/types";
 
 export function ProblemsDetails() {
   return (
-    <View
-      style={{
-        flex: 1,
-        flexShrink: 1,
-        paddingVertical: 10,
-        paddingHorizontal: 20,
-      }}
-    >
-      <ImageBackground
+    <D.Container>
+      <D.Img
         source={{
           uri: "https://www.agrolink.com.br/upload/problemas/Euphorbia_heterophylla95.jpg",
         }}
         imageStyle={{
           borderRadius: 25,
         }}
-        style={{
-          width: "100%",
-          height: 300,
-          elevation: 5,
-          borderRadius: 25,
-          marginBottom: 10
-        }}
       >
-        <View
-          style={{
-            flex: 1,
-            justifyContent: "flex-end",
-            borderRadius: 25,
-            paddingVertical: 20,
-            paddingHorizontal: 20,
-          }}
-        >
-          <View
+        <D.HeaderImage>
+          <D.ActionItem activeOpacity={0.6}>
+            <SimpleLineIcons name="arrow-left-circle" size={20} color="white" />
+          </D.ActionItem>
+
+          <D.ActionItem
+            activeOpacity={0.6}
             style={{
-              width: "100%",
-              justifyContent: "space-between",
               backgroundColor: "#00000092",
-              paddingVertical: 10,
-              paddingHorizontal: 10,
-              borderRadius: 15,
+              width: 40,
+              height: 40,
+              borderRadius: 50,
+              justifyContent: "center",
+              alignItems: "center",
             }}
           >
-            <Title $color={Theme.dark.primaryText} $fontSize={TextType.medium}>
-              Angiquinho (Aeschynomene denticulata)
+            <SimpleLineIcons name="star" size={18} color="white" />
+          </D.ActionItem>
+        </D.HeaderImage>
+
+        <D.FooterImage>
+          <D.ContentFooterImage>
+            <Title $color="white" $fontSize={TextType.medium}>
+              Neoleucinodes elegantalis (Broca pequena do tomateiro)
             </Title>
 
-            <Subtitle $color={"gray"}> Roundup Original DI </Subtitle>
-          </View>
-        </View>
-      </ImageBackground>
+            <View
+              style={{ flexDirection: "row", justifyContent: "space-between" }}
+            >
+              <Subtitle $color={"gray"} $fontSize={TextType.medium}>
+                Roundup Original DI
+              </Subtitle>
+              <Subtitle $color={"gray"} $fontSize={TextType.medium}>
+                Algodão
+              </Subtitle>
+            </View>
+          </D.ContentFooterImage>
+        </D.FooterImage>
+      </D.Img>
 
       <View
         style={{
           flexDirection: "row",
           justifyContent: "space-between",
           alignItems: "center",
+          marginTop: 10,
         }}
       >
-        <Title $color={"#62ff5a5a"}>Algodão</Title>
-        <Subtitle $color={"gray"}> Roundup Original DI </Subtitle>
+        <Title $color={"#62ff5a5a"}>Detalhes</Title>
       </View>
 
-      <View style={{ marginBottom: 10 }}>
-        <Subtitle $color={"gray"}>
-          Angiquinho (Aeschynomene denticulata)
-        </Subtitle>
-      </View>
+      <D.InfoContainer>
+        <View style={{ gap: 20 }}>
+          <View style={{ flexDirection: "row" }}>
+            <View style={{ width: "60%" }}>
+              <Title
+                $color={Theme.dark.primaryText}
+                $fontSize={TextType.medium}
+              >
+                Dose
+              </Title>
+              <Subtitle $fontSize={TextType.medium}>2 á 3 L p.c/ha</Subtitle>
+            </View>
 
-      <View style={{ marginBottom: 10 }}>
-        <Subtitle $color={"gray"}>
-          Angiquinho (Aeschynomene denticulata)
-        </Subtitle>
-      </View>
+            <View style={{ flexShrink: 1 }}>
+              <Title
+                $color={Theme.dark.primaryText}
+                $fontSize={TextType.medium}
+              >
+                Int. Segurança
+              </Title>
+              <Subtitle $fontSize={TextType.medium}>28 dias</Subtitle>
+            </View>
+          </View>
 
-      <View style={{ marginBottom: 10 }}>
-        <Subtitle $color={"gray"}>
-          Angiquinho (Aeschynomene denticulata)
-        </Subtitle>
-      </View>
+          <View style={{ flexDirection: "row" }}>
+            <View style={{ width: "60%" }}>
+              <Title
+                $color={Theme.dark.primaryText}
+                $fontSize={TextType.medium}
+              >
+                Calda Aérea
+              </Title>
+              <Subtitle $fontSize={TextType.medium}>120 L de calda/ha</Subtitle>
+            </View>
 
-      <View style={{ marginBottom: 10 }}>
-        <Subtitle $color={"gray"}>
-          Angiquinho (Aeschynomene denticulata)
-        </Subtitle>
-      </View>
+            <View style={{ flexShrink: 1 }}>
+              <Title
+                $color={Theme.dark.primaryText}
+                $fontSize={TextType.medium}
+              >
+                Calda Terrestre
+              </Title>
+              <Subtitle $fontSize={TextType.medium}>120 L de calda/ha</Subtitle>
+            </View>
+          </View>
 
-      <View style={{ marginBottom: 10 }}>
-        <Subtitle $color={"gray"}>
-          Angiquinho (Aeschynomene denticulata)
-        </Subtitle>
-      </View>
+          <View>
+            <Title $color={Theme.dark.primaryText} $fontSize={TextType.medium}>
+              Intervalo de aplicação
+            </Title>
+            <Subtitle $fontSize={TextType.medium}>
+              Realizar no máximo 2 aplicações em um intervalo de 14 dias, de
+              acordo com o monitoramento da praga.
+            </Subtitle>
+          </View>
 
-      <View style={{ marginBottom: 10 }}>
-        <Subtitle $color={"gray"}>
-          Angiquinho (Aeschynomene denticulata)
-        </Subtitle>
-      </View>
-
-      <View style={{ marginBottom: 10 }}>
-        <Subtitle $color={"gray"}>
-          Angiquinho (Aeschynomene denticulata)
-        </Subtitle>
-      </View>
-
-      <View style={{ marginBottom: 10 }}>
-        <Subtitle $color={"gray"}>
-          Angiquinho (Aeschynomene denticulata)
-        </Subtitle>
-      </View>
-
-      <View style={{ marginBottom: 10 }}>
-        <Subtitle $color={"gray"}>
-          Angiquinho (Aeschynomene denticulata)
-        </Subtitle>
-      </View>
-
-      <View style={{ marginBottom: 10 }}>
-        <Subtitle $color={"gray"}>
-          Angiquinho (Aeschynomene denticulata)
-        </Subtitle>
-      </View>
-
-      <View style={{ marginBottom: 10 }}>
-        <Subtitle $color={"gray"}>
-          Angiquinho (Aeschynomene denticulata)
-        </Subtitle>
-      </View>
-
-      <View style={{ marginBottom: 10 }}>
-        <Subtitle $color={"gray"}>
-          Angiquinho (Aeschynomene denticulata)
-        </Subtitle>
-      </View>
-
-      <View style={{ marginBottom: 10 }}>
-        <Subtitle $color={"gray"}>
-          Angiquinho (Aeschynomene denticulata)
-        </Subtitle>
-      </View>
-
-      <View style={{ marginBottom: 10 }}>
-        <Subtitle $color={"gray"}>
-          Angiquinho (Aeschynomene denticulata)
-        </Subtitle>
-      </View>
-
-      <View style={{ marginBottom: 10 }}>
-        <Subtitle $color={"gray"}>
-          Angiquinho (Aeschynomene denticulata)
-        </Subtitle>
-      </View>
-            <View style={{ marginBottom: 10 }}>
-        <Subtitle $color={"gray"}>
-          Angiquinho (Aeschynomene denticulata)
-        </Subtitle>
-      </View>
-
-      <View style={{ marginBottom: 10 }}>
-        <Subtitle $color={"gray"}>
-          Angiquinho (Aeschynomene denticulata)
-        </Subtitle>
-      </View>
-
-      <View style={{ marginBottom: 10 }}>
-        <Subtitle $color={"gray"}>
-          Angiquinho (Aeschynomene denticulata)
-        </Subtitle>
-      </View>
-
-      <View style={{ marginBottom: 10 }}>
-        <Subtitle $color={"gray"}>
-          Angiquinho (Aeschynomene denticulata)
-        </Subtitle>
-      </View>
-
-      <View style={{ marginBottom: 10 }}>
-        <Subtitle $color={"gray"}>
-          Angiquinho (Aeschynomene denticulata)
-        </Subtitle>
-      </View>
-
-      <View style={{ marginBottom: 10 }}>
-        <Subtitle $color={"gray"}>
-          Angiquinho (Aeschynomene denticulata)
-        </Subtitle>
-      </View>
-
-      <View style={{ marginBottom: 10 }}>
-        <Subtitle $color={"gray"}>
-          Angiquinho (Aeschynomene denticulata)
-        </Subtitle>
-      </View>
-
-      <View style={{ marginBottom: 10 }}>
-        <Subtitle $color={"gray"}>
-          Angiquinho (Aeschynomene denticulata)
-        </Subtitle>
-      </View>
-
-      <View style={{ marginBottom: 10 }}>
-        <Subtitle $color={"gray"}>
-          Angiquinho (Aeschynomene denticulata)
-        </Subtitle>
-      </View>
-
-      <View style={{ marginBottom: 10 }}>
-        <Subtitle $color={"gray"}>
-          Angiquinho (Aeschynomene denticulata)
-        </Subtitle>
-      </View>
-
-      <View style={{ marginBottom: 10 }}>
-        <Subtitle $color={"gray"}>
-          Angiquinho (Aeschynomene denticulata)
-        </Subtitle>
-      </View>
-
-      <View style={{ gap: 5 }}>
-        <View
-          style={{
-            flexDirection: "row",
-            gap: 5,
-            alignItems: "center",
-          }}
-        >
-          <Subtitle $color={Theme.dark.primaryText}>Dose:</Subtitle>
-
-          <Subtitle style={{ marginTop: 1.3 }}>2 á 3 L p.c/ha</Subtitle>
+          <View>
+            <Title $color={Theme.dark.primaryText} $fontSize={TextType.medium}>
+              Época de aplicação
+            </Title>
+            <Subtitle $fontSize={TextType.medium}>
+              Iniciar as pulverizações no início da infestação após a eclosão
+              dos ovos com as lagartas no 1º ou 2º ínstar de desenvolvimento.
+            </Subtitle>
+          </View>
         </View>
-
-        <View
-          style={{
-            flexDirection: "row",
-            gap: 5,
-            alignItems: "center",
-          }}
-        >
-          <Subtitle $color={Theme.dark.primaryText}>Calda Terrestre:</Subtitle>
-
-          <Subtitle style={{ marginTop: 1.3 }}>120 L de calda/ha</Subtitle>
-        </View>
-
-        <View
-          style={{
-            flexDirection: "row",
-            gap: 5,
-            alignItems: "center",
-          }}
-        >
-          <Subtitle $color={Theme.dark.primaryText}>Calda Aérea:</Subtitle>
-
-          <Subtitle style={{ marginTop: 1.3 }}>
-            20 á 40 L calda/ha (aéreo)
-          </Subtitle>
-        </View>
-      </View>
-    </View>
+      </D.InfoContainer>
+    </D.Container>
   );
 }

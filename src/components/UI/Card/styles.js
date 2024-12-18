@@ -7,7 +7,7 @@ export const Card = styled(({ as: DynamicCard = View, ...props }) => (
   flex: 1;
   gap: ${props => props.$gap + 'px'};
   background-color: ${props => props.$backgroundColor};
-  border-radius: 15px;
+  border-radius: ${props => props.$radius + 'px'} ;
 
   height: ${props => props.$height + 'px'};
   min-height: ${props => props.$minHeight + 'px'};
