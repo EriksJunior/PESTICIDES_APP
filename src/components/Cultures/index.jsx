@@ -6,7 +6,6 @@ import { Skeleton } from "./components/Skeleton";
 
 import { FindCultureDetails } from "../../services/CultureService";
 
-
 export function Cultures({ pesticideId }) {
   const [isLoading, setIsLoading] = useState(false);
   const [cultures, setCultures] = useState([]);
@@ -50,11 +49,11 @@ export function Cultures({ pesticideId }) {
             scrollEnabled={false}
             data={cultures}
             keyExtractor={(cultures) => cultures.id}
-            renderItem={({ item: { cultura }, index }) => (
+            renderItem={({ item, index }) => (
               <Details
                 pesticideId={pesticideId}
-                culture={cultura}
-                key={cultura.id}
+                selectedItem={item}
+                key={item?.cultura?.id}
                 onPress={() => setActiveIdx(activeIdx === index ? -1 : index)}
                 isOpen={activeIdx === index}
               />

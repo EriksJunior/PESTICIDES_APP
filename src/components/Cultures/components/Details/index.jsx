@@ -1,24 +1,35 @@
-import { useState } from "react";
+import { useEffect, useState, useContext } from "react";
 
 import { View, ActivityIndicator, FlatList } from "react-native";
 import { Entypo, SimpleLineIcons } from "@expo/vector-icons";
 
+import { GlobalContext } from "../../../../context";
+
 import { Card } from "../../../UI/Card";
-import {Problems} from "../../../Problems";
+import { Problems } from "../../../Problems";
 
 import * as C from "./styles";
 import { Theme } from "../../../../styles/theme";
 import { Title, Subtitle } from "../../../../styles/global";
 import { FindProblemsByCultureId } from "../../../../services/ProblemsService";
 
-export function Details({ pesticideId, culture, isOpen = false, onPress }) {
+export function Details({
+  pesticideId,
+  selectedItem,
+  isOpen = false,
+  onPress,
+}) {
   const [isLoading, setIsLoading] = useState(false);
   const [problems, setProblems] = useState([]);
+  const { setCulture } = useContext(GlobalContext);
 
   const findProblems = async () => {
     setIsLoading(true);
 
-    const result = await FindProblemsByCultureId(culture.id, pesticideId);
+    const result = await FindProblemsByCultureId(
+      selectedItem?.cultura.id,
+      pesticideId
+    );
     setProblems(result);
 
     setIsLoading(false);
@@ -34,7 +45,7 @@ export function Details({ pesticideId, culture, isOpen = false, onPress }) {
       minHeight={50}
       isTouchable
       onPress={() => {
-        onPress(), findProblems();
+        onPress(), findProblems(), setCulture(selectedItem);
       }}
     >
       <C.Header>
@@ -43,7 +54,7 @@ export function Details({ pesticideId, culture, isOpen = false, onPress }) {
           style={{ flex: 1 }}
           numberOfLines={1}
         >
-          {culture?.nome}
+          {selectedItem?.cultura?.nome}
         </Title>
 
         <View style={{ flexDirection: "row", alignItems: "center", gap: 10 }}>
@@ -85,7 +96,7 @@ export function Details({ pesticideId, culture, isOpen = false, onPress }) {
                 problem={item}
                 key={key}
                 pesticideId={pesticideId}
-                cultureId={culture.id}
+                cultureId={selectedItem?.cultura?.id}
               />
             )}
             ItemSeparatorComponent={() => (

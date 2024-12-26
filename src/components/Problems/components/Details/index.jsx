@@ -1,6 +1,8 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { View } from "react-native";
 import { SimpleLineIcons } from "@expo/vector-icons";
+
+import { GlobalContext } from "../../../../context";
 
 import { FindProblemsDetails } from "../../../../services/ProblemsService";
 
@@ -11,6 +13,7 @@ import { TextType } from "../../../../styles/types";
 
 export function ProblemsDetails({ id, cultureId, pesticideId }) {
   const [details, setDetails] = useState(null);
+  const { culture } = useContext(GlobalContext);
 
   const findProblemsDetails = async () => {
     const problemsDetails = await FindProblemsDetails(
@@ -19,7 +22,7 @@ export function ProblemsDetails({ id, cultureId, pesticideId }) {
       id
     );
 
-    setDetails(problemsDetails[0]);
+    setDetails(problemsDetails);
   };
 
   useEffect(() => {
@@ -69,10 +72,10 @@ export function ProblemsDetails({ id, cultureId, pesticideId }) {
               style={{ flexDirection: "row", justifyContent: "space-between" }}
             >
               <Subtitle $color={"gray"} $fontSize={TextType.medium}>
-                Roundup Original DI
+                {details?.nome_agrotoxico}
               </Subtitle>
               <Subtitle $color={"gray"} $fontSize={TextType.medium}>
-                Algodão
+                {details?.nome_cultura}
               </Subtitle>
             </View>
           </D.ContentFooterImage>
@@ -113,7 +116,9 @@ export function ProblemsDetails({ id, cultureId, pesticideId }) {
               >
                 Int. Segurança
               </Title>
-              <Subtitle $fontSize={TextType.medium}>28 dias</Subtitle>
+              <Subtitle $fontSize={TextType.medium}>
+                {culture?.intervalo_seguranca}
+              </Subtitle>
             </View>
           </View>
 
@@ -158,8 +163,7 @@ export function ProblemsDetails({ id, cultureId, pesticideId }) {
               Época de aplicação
             </Title>
             <Subtitle $fontSize={TextType.medium}>
-              Iniciar as pulverizações no início da infestação após a eclosão
-              dos ovos com as lagartas no 1º ou 2º ínstar de desenvolvimento.
+              {culture?.descricao_aplicacao}
             </Subtitle>
           </View>
         </View>
