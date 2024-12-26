@@ -1,12 +1,31 @@
-import { ImageBackground, View, TouchableOpacity } from "react-native";
+import { useEffect, useState } from "react";
+import { View } from "react-native";
 import { SimpleLineIcons } from "@expo/vector-icons";
+
+import { FindProblemsDetails } from "../../../../services/ProblemsService";
 
 import * as D from "./styles";
 import { Subtitle, Title } from "../../../../styles/global";
 import { Theme } from "../../../../styles/theme";
 import { TextType } from "../../../../styles/types";
 
-export function ProblemsDetails() {
+export function ProblemsDetails({ id, cultureId, pesticideId }) {
+  const [details, setDetails] = useState(null);
+
+  const findProblemsDetails = async () => {
+    const problemsDetails = await FindProblemsDetails(
+      cultureId,
+      pesticideId,
+      id
+    );
+
+    setDetails(problemsDetails[0]);
+  };
+
+  useEffect(() => {
+    findProblemsDetails();
+  }, [id]);
+
   return (
     <D.Container>
       <D.Img
@@ -18,7 +37,10 @@ export function ProblemsDetails() {
         }}
       >
         <D.HeaderImage>
-          <D.ActionItem activeOpacity={0.6} onPress={() => console.log('voltar')}>
+          <D.ActionItem
+            activeOpacity={0.6}
+            onPress={() => console.log("voltar")}
+          >
             <SimpleLineIcons name="arrow-left-circle" size={20} color="white" />
           </D.ActionItem>
 
@@ -40,7 +62,7 @@ export function ProblemsDetails() {
         <D.FooterImage>
           <D.ContentFooterImage>
             <Title $color="white" $fontSize={TextType.medium}>
-              Neoleucinodes elegantalis (Broca pequena do tomateiro)
+              {details?.nome_cientifico} ({details?.nome_comum})
             </Title>
 
             <View
@@ -78,7 +100,10 @@ export function ProblemsDetails() {
               >
                 Dose
               </Title>
-              <Subtitle $fontSize={TextType.medium}>2 á 3 L p.c/ha</Subtitle>
+              <Subtitle $fontSize={TextType.medium}>
+                {details?.dose_minima} á {details?.dose_maxima}{" "}
+                {details?.unidade_dose}
+              </Subtitle>
             </View>
 
             <View style={{ flexShrink: 1 }}>
@@ -110,7 +135,11 @@ export function ProblemsDetails() {
               >
                 Calda Terrestre
               </Title>
-              <Subtitle $fontSize={TextType.medium}>120 L de calda/ha</Subtitle>
+              <Subtitle $fontSize={TextType.medium}>
+                {details?.dose_minima_volume_calda} á{" "}
+                {details?.dose_maxima_volume_calda}{" "}
+                {details?.unidade_volume_calda}
+              </Subtitle>
             </View>
           </View>
 

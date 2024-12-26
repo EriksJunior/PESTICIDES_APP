@@ -1,25 +1,20 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import { View, ScrollView } from "react-native";
 import { router } from "expo-router";
 import { SimpleLineIcons, FontAwesome, FontAwesome5 } from "@expo/vector-icons";
 
-import { PesticideDetailsContext } from "../../../../context/PesticideDetails";
-
 import * as D from "./styles";
 import { Card } from "../../../UI/Card";
 import { Cultures } from "../../../Cultures";
-import { BottomSheet } from "../../../UI/BottomSheet";
 
 import { Title, Subtitle } from "../../../../styles/global";
 import { Theme } from "../../../../styles/theme";
 import { TextType } from "../../../../styles/types";
 
 import { FindPerticideDetails } from "../../../../services/PesticideService";
-import { ProblemsDetails } from "../../../Problems/components/Details";
 
 export function Details({ pesticideId }) {
   const [details, setDetails] = useState({});
-  const { problemIsOpen, toggle } = useContext(PesticideDetailsContext);
 
   const findPerticideDetails = async () => {
     const pesticeDetails = await FindPerticideDetails(pesticideId);
@@ -275,10 +270,6 @@ export function Details({ pesticideId }) {
           </D.Content>
         </D.Container>
       </ScrollView>
-
-      {/* <BottomSheet onClose={toggle} isOpen={problemIsOpen}>
-        <ProblemsDetails />
-      </BottomSheet> */}
     </>
   );
 }

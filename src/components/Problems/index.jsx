@@ -1,33 +1,19 @@
-import { useContext } from "react";
+import { router } from "expo-router";
 import { TouchableOpacity, View, Text } from "react-native";
 import { SimpleLineIcons } from "@expo/vector-icons";
-
-import { PesticideDetailsContext } from "../../context/PesticideDetails";
 
 import * as P from "./styles";
 import { Theme } from "../../styles/theme";
 
-import { FindProblemsDetails } from "../../services/ProblemsService";
-import { router } from "expo-router";
-
 export function Problems({ problem, pesticideId, cultureId }) {
-  const { toggle } = useContext(PesticideDetailsContext);
-
-  const findProblemsDetails = async () => {
-    const problemsDetails = await FindProblemsDetails(
-      cultureId,
-      pesticideId,
-      problem.id
-    );
-
-    console.log(problemsDetails);
-    toggle();
-  };
-
   return (
     <TouchableOpacity
       activeOpacity={0.6}
-      onPress={() => router.push(`/problems`)}
+      onPress={() =>
+        router.push(
+          `/problems?id=${problem.id}&pesticideId=${pesticideId}&cultureId=${cultureId}`
+        )
+      }
       style={{
         flex: 1,
         flexDirection: "row",
