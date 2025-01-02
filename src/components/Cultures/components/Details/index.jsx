@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from "react";
+import { useState, useContext } from "react";
 
 import { View, ActivityIndicator, FlatList } from "react-native";
 import { Entypo, SimpleLineIcons } from "@expo/vector-icons";

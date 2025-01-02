@@ -3,11 +3,11 @@ import { View, ScrollView } from "react-native";
 import { router } from "expo-router";
 import { SimpleLineIcons, FontAwesome, FontAwesome5 } from "@expo/vector-icons";
 
-import * as D from "./styles";
 import { Card } from "../../../UI/Card";
 import { Cultures } from "../../../Cultures";
 
-import { Title, Subtitle } from "../../../../styles/global";
+import * as D from "./styles";
+import { Title, Subtitle, Header, ActionItem } from "../../../../styles/global";
 import { Theme } from "../../../../styles/theme";
 import { TextType } from "../../../../styles/types";
 
@@ -33,16 +33,13 @@ export function Details({ pesticideId }) {
 
   return (
     <>
-      <D.Header>
-        <D.GoBack
-          activeOpacity={0.6}
-          onPress={() => router.navigate("/(search)")}
-        >
+      <Header>
+        <ActionItem activeOpacity={0.6} onPress={() => router.back()}>
           <SimpleLineIcons name="arrow-left" size={15} color="white" />
-        </D.GoBack>
+        </ActionItem>
 
         <Title>Detalhes</Title>
-      </D.Header>
+      </Header>
 
       <ScrollView
         showsVerticalScrollIndicator={false}

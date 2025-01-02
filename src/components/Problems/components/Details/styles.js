@@ -1,13 +1,7 @@
 import styled from "styled-components/native";
-import { Theme } from "../../../../styles/theme";
 
 export const Container = styled.View`
-  flex: 1;
-  flex-shrink: 1;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-bottom: 100px;
   gap: 10px;
 `
 
@@ -18,18 +12,6 @@ export const Img = styled.ImageBackground`
   border-radius: 25px;
   margin-bottom: 10px;
   position: relative;
-`
-
-export const HeaderImage = styled.View`
-  width: 100%;
-  padding-left: 20px;
-  padding-right: 20px;
-  position: absolute;
-  top: 10px;
-  flex-direction: row;
-  justify-content: space-between;
-  color: ${Theme.dark.primaryText};
-  z-index: 200;
 `
 
 export const FooterImage = styled.View`
@@ -46,15 +28,6 @@ export const ContentFooterImage = styled.View`
   background-color: #00000092;
   padding: 10px;
   border-radius: 15px;
-`
-
-export const ActionItem = styled.TouchableOpacity`
-  background-color: #00000092;
-  width: 40px;
-  height: 40px;
-  border-radius: 50px;
-  justify-content: center;
-  align-items: center;
 `
 
 export const InfoContainer = styled.View`

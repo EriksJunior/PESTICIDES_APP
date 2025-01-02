@@ -14,7 +14,7 @@ export default function RootLayout() {
     <GlobalProvider>
       <Stack>
         <Stack.Screen
-          name="(perticide)"
+          name="(pesticide)"
           options={{ animation: "ios", headerShown: false }}
         />
         <Stack.Screen
