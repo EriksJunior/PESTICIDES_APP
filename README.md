@@ -1,50 +1,49 @@
-# Welcome to your Expo app 👋
+**🚧🚧 EM DESENVOLVIMENTO 🚧🚧**
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Consulta de Agrotóxicos - React Native + Expo + Expo Router
 
-## Get started
+Sobre o Projeto
+Este projeto é um aplicativo mobile desenvolvido em React Native com Expo e Expo Router para facilitar a consulta de informações sobre agrotóxicos. O objetivo é fornecer dados atualizados e acessíveis sobre produtos registrados, sua composição, restrições e recomendações de uso.
 
-1. Install dependencies
+Expo SDK Version 52.0.31
+Caso opte por utilizar o expo go, usar a versão 51 da sdk do expo go
 
-   ```bash
-   npm install
-   ```
+Tecnologias Utilizadas
 
-2. Start the app
+React Native
+Expo
+Expo Router
+TypeScript
+Axios
+Styled Components
 
-   ```bash
-    npx expo start
-   ```
+Instalação e Configuração
+Certifique-se de ter o Node.js instalado.
+Instale o Expo CLI (caso ainda não tenha):
+npm install -g expo-cli
+Clone este repositório:
 
-In the output, you'll find options to open the app in a
+git clone https://github.com/EriksJunior/PESTICIDES_APP.git
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+Acesse o diretório do projeto:
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+cd nome-do-projeto
 
-## Get a fresh project
+Instale as dependências:
 
-When you're ready, run:
+npm install
 
-```bash
-npm run reset-project
-```
+Inicie o projeto:
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+npx expo start
 
-## Learn more
+Funcionalidades
 
-To learn more about developing your project with Expo, look at the following resources:
+📌 Busca de agrotóxicos por nome.
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+📋 Detalhes sobre cada produto, incluindo composição e restrições.
 
-## Join the community
+Video explicativo
 
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+**DEMO**
+Dentro da pasta **demo** contém um video de demonstração do projeto 
