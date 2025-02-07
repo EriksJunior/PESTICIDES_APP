@@ -1,4 +1,4 @@
-**IMPORTANTE** Video DEMO: https://github.dev/EriksJunior/PESTICIDES_APP/blob/main/demo/demo.mp4
+**DEMO**: https://github.dev/EriksJunior/PESTICIDES_APP/blob/main/demo/demo.mp4
 
 **Observações**
 Foi utilizado um api para consumir os dados, somente para testes.
