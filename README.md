@@ -1,5 +1,10 @@
-**🚧🚧 EM DESENVOLVIMENTO 🚧🚧**
+**IMPORTANTE**
+Dentro da pasta **demo** contém um video de demonstração do projeto
 
+**Observações**
+Foi utilizado um api para consumir os dados, somente para testes.
+
+**🚧🚧 EM DESENVOLVIMENTO 🚧🚧**
 Consulta de Agrotóxicos - React Native + Expo + Expo Router
 
 Sobre o Projeto
@@ -27,7 +32,7 @@ git clone https://github.com/EriksJunior/PESTICIDES_APP.git
 
 Acesse o diretório do projeto:
 
-cd nome-do-projeto
+cd PESTICIDES_APP
 
 Instale as dependências:
 
@@ -43,7 +48,4 @@ Funcionalidades
 
 📋 Detalhes sobre cada produto, incluindo composição e restrições.
 
-Video explicativo
-
-**DEMO**
-Dentro da pasta **demo** contém um video de demonstração do projeto 
+📽️ [Baixar vídeo de demonstração](demo/demo.mp4)
