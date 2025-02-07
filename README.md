@@ -3,7 +3,7 @@
 **Observações**
 Foi utilizado um api para consumir os dados, somente para testes.
 
-**🛑 STOP 🛑** `Aplicação parada devido a focus em outro projeto, pretendo voltar a mexer`
+**🛑 STOP 🛑** `Aplicação parada devido a meu foco em outro projeto, pretendo voltar a mexer`
 Consulta de Agrotóxicos - React Native + Expo + Expo Router
 
 Sobre o Projeto
