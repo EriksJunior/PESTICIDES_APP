@@ -1,5 +1,4 @@
-**IMPORTANTE**
-Dentro da pasta **demo** contém um video de demonstração do projeto
+**IMPORTANTE** Video DEMO: https://github.dev/EriksJunior/PESTICIDES_APP/blob/main/demo/demo.mp4
 
 **Observações**
 Foi utilizado um api para consumir os dados, somente para testes.
