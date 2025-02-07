@@ -46,7 +46,7 @@ Funcionalidades
 Video explicativo
 
 <video width="600" controls>
-  <source src="caminho/para/seu-video.mp4" type="video/mp4">
+  <source src="demo.mp4" type="video/mp4">
   Seu navegador não suporta vídeos.
 </video>
 
