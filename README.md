@@ -47,4 +47,4 @@ Funcionalidades
 
 📋 Detalhes sobre cada produto, incluindo composição e restrições.
 
-📽️ [Baixar vídeo de demonstração](demo/demo.mp4)
+📽️ [Visualizar vídeo de demonstração](demo/demo.mp4)
