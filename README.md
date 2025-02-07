@@ -1,4 +1,4 @@
-**DEMO**: https://github.dev/EriksJunior/PESTICIDES_APP/blob/main/demo/demo.mp4
+##  📽️ DEMO [Visualizar vídeo de demonstração](https://github.dev/EriksJunior/PESTICIDES_APP/blob/main/demo/demo.mp4)
 
 **Observações**
 Foi utilizado um api para consumir os dados, somente para testes.
@@ -46,5 +46,3 @@ Funcionalidades
 📌 Busca de agrotóxicos por nome.
 
 📋 Detalhes sobre cada produto, incluindo composição e restrições.
-
-📽️ [Visualizar vídeo de demonstração](demo/demo.mp4)
