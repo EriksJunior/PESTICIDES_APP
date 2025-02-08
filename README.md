@@ -1,9 +1,9 @@
-##  📽️ DEMO [Visualizar vídeo de demonstração](https://github.dev/EriksJunior/PESTICIDES_APP/blob/main/demo/demo.mp4)
+##  📽️ DEMO [Visualizar vídeo de demonstração](https://github.dev/EriksJunior/app_contra_track)
 
 **Observações**
 Foi utilizado um api para consumir os dados, somente para testes.
 
-**🛑 STOP 🛑** `Aplicação parada devido a meu foco em outro projeto, pretendo voltar a mexer em breve`
+### **🛑 STOP 🛑** **`Aplicação parada devido a meu foco em outro projeto, pretendo voltar a mexer em breve`**
 Consulta de Agrotóxicos - React Native + Expo + Expo Router
 
 Sobre o Projeto
